@@ -24,7 +24,7 @@ jobs:
         run: |
           msbuild.exe HeistProject.sln /p:platform="x64" /p:configuration="Release"
       - name: Copy HeistProject Data Files
-        run: Copy 'HeistProjectFiles/' 'bin/x64/Release/HeistProject'
+        run: Copy 'HeistProjectFiles/' 'bin/x64/Release/HeistProject' -recurse
         shell: powershell
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3.0.0
