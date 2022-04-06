@@ -42,7 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ionic.Zip">
-      <HintPath>D:\Steam\steamapps\common\Grand Theft Auto V\Scripts\Ionic.Zip.dll</HintPath>
+      <HintPath>..\HeistProject\lib\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NativeUI, Version=1.9.0.0, Culture=neutral, processorArchitecture=AMD64">
@@ -50,7 +50,7 @@
       <HintPath>..\HeistProject\lib\NativeUI.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>D:\Steam\steamapps\common\Grand Theft Auto V\Scripts\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\HeistProject\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ScriptHookVDotNet2, Version=2.10.10.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
