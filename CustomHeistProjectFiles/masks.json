@@ -1,0 +1,290 @@
+{
+    "MainDict": {
+        "Horror Hockey": [
+            {
+                "Name": "Hockey Mask 1",
+                "Id": 4,
+                "Texture": -1
+            },
+            {
+                "Name": "Hockey Mask 2",
+                "Id": 14,
+                "Texture": -1
+            },
+            {
+                "Name": "Hockey Mask 3",
+                "Id": 15,
+                "Texture": -1
+            },
+            {
+                "Name": "Hockey Mask 4",
+                "Id": 16,
+                "Texture": -1
+            },
+            {
+                "Name": "Hockey Mask 5",
+                "Id": 30,
+                "Texture": -1
+            }
+        ],
+        "Balaclavas": [
+            {
+                "Name": "Black Balaclava",
+                "Id": 35,
+                "Texture": -1
+            },
+            {
+                "Name": "Scruffy Balaclava",
+                "Id": 37,
+                "Texture": -1
+            },
+            {
+                "Name": "Loose Balaclava",
+                "Id": 56,
+                "Texture": -1
+            },
+            {
+                "Name": "Knit Balaclava",
+                "Id": 57,
+                "Texture": -1
+            },
+            {
+                "Name": "Striped Knit Balaclava",
+                "Id": 58,
+                "Texture": -1
+            }
+        ],
+        "Animals": [
+            {
+                "Name": "Pig",
+                "Id": 1,
+                "Texture": -1
+            },
+            {
+                "Name": "Monkey",
+                "Id": 5,
+                "Texture": -1
+            },
+            {
+                "Name": "Bear",
+                "Id": 21,
+                "Texture": -1
+            },
+            {
+                "Name": "Bison",
+                "Id": 22,
+                "Texture": -1
+            },
+            {
+                "Name": "Bull",
+                "Id": 23,
+                "Texture": -1
+            },
+            {
+                "Name": "Hawk",
+                "Id": 24,
+                "Texture": -1
+            },
+            {
+                "Name": "Scavenger",
+                "Id": 25,
+                "Texture": -1
+            },
+            {
+                "Name": "Wolf",
+                "Id": 26,
+                "Texture": -1
+            }
+        ],
+        "Characters": [
+            {
+                "Name": "Cat",
+                "Id": 17,
+                "Texture": -1
+            },
+            {
+                "Name": "Fox",
+                "Id": 18,
+                "Texture": -1
+            },
+            {
+                "Name": "Skunk",
+                "Id": 20,
+                "Texture": -1
+            },
+            {
+                "Name": "Impotent Rage",
+                "Id": 43,
+                "Texture": -1
+            },
+            {
+                "Name": "Princess Robot Bubblegum",
+                "Id": 44,
+                "Texture": -1
+            },
+            {
+                "Name": "Moorehead",
+                "Id": 45,
+                "Texture": -1
+            },
+            {
+                "Name": "Plastic Face",
+                "Id": 50,
+                "Texture": -1
+            },
+            {
+                "Name": "Pogo",
+                "Id": 3,
+                "Texture": -1
+            }
+        ],
+        "Crime": [
+            {
+                "Name": "T-Shirt Mask",
+                "Id": 54,
+                "Texture": -1
+            },
+            {
+                "Name": "Bandana",
+                "Id": 51,
+                "Texture": -1
+            },
+            {
+                "Name": "Duct Tape",
+                "Id": 48,
+                "Texture": -1
+            },
+            {
+                "Name": "Tape",
+                "Id": 47,
+                "Texture": -1
+            }
+        ],
+        "Monsters": [
+            {
+                "Name": "Frank",
+                "Id": 42,
+                "Texture": -1
+            },
+            {
+                "Name": "Vampyr",
+                "Id": 41,
+                "Texture": -1
+            },
+            {
+                "Name": "Mummy",
+                "Id": 40,
+                "Texture": -1
+            },
+            {
+                "Name": "Infected",
+                "Id": 39,
+                "Texture": -1
+            },
+            {
+                "Name": "Skeletal",
+                "Id": 29,
+                "Texture": -1
+            },
+            {
+                "Name": "The Beast",
+                "Id": 59,
+                "Texture": -1
+            }
+
+        ],
+        "Paper Bags": [
+            {
+                "Name": "Paper Bag",
+                "Id": 49,
+                "Texture": -1
+            }
+        ],
+        "Ski Masks": [
+            {
+                "Name": "Toggle Ski",
+                "Id": 55,
+                "Texture": -1
+            },
+            {
+                "Name": "Hooded Ski",
+                "Id": 53,
+                "Texture": -1
+            },
+            {
+                "Name": "Tight Ski",
+                "Id": 52,
+                "Texture": -1
+            }
+        ],
+        "Tactical": [
+            {
+                "Name": "Gas Mask",
+                "Id": 38,
+                "Texture": -1
+            },
+            {
+                "Name": "Forest Combat Mask",
+                "Id": 28,
+                "Texture": -1
+            },
+            {
+                "Name": "Hazmat Mask",
+                "Id": 46,
+                "Texture": -1
+            }
+        ],
+        "Christmas": [
+            {
+                "Name": "Angry Cookie",
+                "Id": 75,
+                "Texture": -1
+            },
+            {
+                "Name": "Bad Santa",
+                "Id": 76,
+                "Texture": -1
+            },
+            {
+                "Name": "Christmas Tree",
+                "Id": 77,
+                "Texture": -1
+            },
+            {
+                "Name": "Creamy",
+                "Id": 78,
+                "Texture": -1
+            },
+            {
+                "Name": "The Turkey",
+                "Id": 85,
+                "Texture": -1
+            },
+            {
+                "Name": "Mama Santa",
+                "Id": 88,
+                "Texture": -1
+            },
+            {
+                "Name": "The Elf",
+                "Id": 87,
+                "Texture": -1
+            },
+            {
+                "Name": "Santa Claus",
+                "Id": 8,
+                "Texture": -1
+            },
+            {
+                "Name": "Reindeer",
+                "Id": 9,
+                "Texture": -1
+            },
+            {
+                "Name": "Frosty",
+                "Id": 10,
+                "Texture": -1
+            }
+        ]
+    }
+}

@@ -1,0 +1,93 @@
+{
+    "MainDict": {
+        "Coveralls": [
+            {
+                "Upper": 1,
+                "Lower": 38,
+                "Accessory": 15,
+                "ShirtOverlay": 65,
+                "Shoes": 35,
+                "MatchColors": true,
+                "Name": "Coveralls"
+            },
+            {
+                "Upper": 94,
+                "Lower": 40,
+                "Accessory": 62,
+                "ShirtOverlay": 67,
+                "Shoes": 35,
+                "MatchColors": true,
+                "Name": "Hazmat Suit"
+            }
+        ],
+        "Casual": [
+            {
+                "Upper": 0,
+                "Lower": 5,
+                "Accessory": 15,
+                "ShirtOverlay": 44,
+                "Shoes": 8,
+                "MatchColors": false,
+                "Name": "Out of Bed"
+            },
+            {
+                "Upper": 8,
+                "Lower": 5,
+                "Accessory": 15,
+                "ShirtOverlay": 38,
+                "Shoes": 8,
+                "MatchColors": false,
+                "Name": "The Doe"
+            },
+            {
+                "Upper": 0,
+                "Lower": 1,
+                "Accessory": 15,
+                "ShirtOverlay": 39,
+                "Shoes": 8,
+                "MatchColors": false,
+                "Name": "The Norm"
+            }
+        ],
+        "Heavy Combat": [
+            {
+                "Upper": 0,
+                "Lower": 41,
+                "Accessory": 55,
+                "ShirtOverlay": 50,
+                "Shoes": 39,
+                "MatchColors": false,
+                "Name": "The Conflict"
+            },
+            {
+                "Upper": 0,
+                "Lower": 41,
+                "Accessory": 56,
+                "ShirtOverlay": 50,
+                "Shoes": 39,
+                "MatchColors": false,
+                "Name": "The Skirmish"
+            }
+        ],
+        "Special": [
+            {
+                "Upper": 0,
+                "Lower": 35,
+                "Accessory": 58,
+                "ShirtOverlay": 55,
+                "Shoes": 25,
+                "MatchColors": false,
+                "Name": "Police"
+            },
+            {
+                "Upper": 0,
+                "Lower": 36,
+                "Accessory": 59,
+                "ShirtOverlay": 56,
+                "Shoes": 24,
+                "MatchColors": false,
+                "Name": "Garbage Collection"
+            }
+        ]
+    }
+}

@@ -146,6 +146,7 @@ namespace InstaScript
         this._vehTarget = World.CreateVehicle(new Model(VehicleHash.Kuruma2), this._kurumaPos, this._kurumaHead);
         this._vehTarget.AddBlip();
         this._vehTarget.CurrentBlip.Color = BlipColor.Blue;
+        this._vehTarget.CurrentBlip.ShowRoute = true;
         ++this.Stage;
       }
       if (this.Stage == 1 && Game.Player.Character.IsInRangeOf(this._vehTarget.Position, 5f))

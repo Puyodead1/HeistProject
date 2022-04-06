@@ -354,6 +354,7 @@ namespace HeistProject
       {
         EntryPoint.Team[index] = World.CreatePed(model, Game.Player.Character.Position);
         EntryPoint.Team[index].RelationshipGroup = num;
+        Function.Call(Hash.SET_PED_COMBAT_MOVEMENT, EntryPoint.Team[index].Handle, 1);
       }
       model.MarkAsNoLongerNeeded();
     }
