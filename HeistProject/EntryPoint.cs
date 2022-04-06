@@ -40,7 +40,7 @@ namespace HeistProject
       EntryPoint.MainSave = Savegame.LoadProgress(EntryPoint.SAVE_PATH);
       this.Tick += new EventHandler(this.OnTick);
       this.KeyDown += new KeyEventHandler(this.OnKeyDown);
-      Function.Call(Hash.REQUEST_STREAMED_TEXTURE_DICT, (InputArgument) "busy_spinner", (InputArgument) true);
+      Function.Call(Hash.REQUEST_STREAMED_TEXTURE_DICT, "busy_spinner", true);
       Masks.Load(EntryPoint.MASK_DATA_PATH);
       Outfits.Load(EntryPoint.OUTFIT_DATA_PATH);
       this._menuPool = new MenuPool();
@@ -125,7 +125,7 @@ namespace HeistProject
       tabTextItem2.Activated += (EventHandler) ((sender, args) =>
       {
         OutputArgument outputArgument = new OutputArgument();
-        Function.Call(Hash.STAT_GET_INT, (InputArgument) Function.Call<int>(Hash.GET_HASH_KEY, (InputArgument) "SP0_TOTAL_CASH"), (InputArgument) outputArgument, (InputArgument) -1);
+        Function.Call(Hash.STAT_GET_INT, Function.Call<int>(Hash.GET_HASH_KEY, "SP0_TOTAL_CASH"), outputArgument, -1);
         int result = outputArgument.GetResult<int>();
         if (result < 10000)
         {
@@ -133,7 +133,7 @@ namespace HeistProject
         }
         else
         {
-          Function.Call(Hash.STAT_SET_INT, (InputArgument) Function.Call<int>(Hash.GET_HASH_KEY, (InputArgument) "SP0_TOTAL_CASH"), (InputArgument) (result - 10000), (InputArgument) 1);
+          Function.Call(Hash.STAT_SET_INT, Function.Call<int>(Hash.GET_HASH_KEY, "SP0_TOTAL_CASH"), (result - 10000), 1);
           EntryPoint.MainSave.DirtyMoney += 10000;
           EntryPoint.MainSave.MoneyTransferred += 10000;
           Savegame.SaveProgress(EntryPoint.MainSave, EntryPoint.SAVE_PATH);
@@ -145,7 +145,7 @@ namespace HeistProject
       tabTextItem3.Activated += (EventHandler) ((sender, args) =>
       {
         OutputArgument outputArgument = new OutputArgument();
-        Function.Call(Hash.STAT_GET_INT, (InputArgument) Function.Call<int>(Hash.GET_HASH_KEY, (InputArgument) "SP0_TOTAL_CASH"), (InputArgument) outputArgument, (InputArgument) -1);
+        Function.Call(Hash.STAT_GET_INT, Function.Call<int>(Hash.GET_HASH_KEY, "SP0_TOTAL_CASH"), outputArgument, -1);
         int result = outputArgument.GetResult<int>();
         int val1 = 10000;
         if (EntryPoint.MainSave.DirtyMoney < 0)
@@ -155,7 +155,7 @@ namespace HeistProject
         else
         {
           int num = System.Math.Min(val1, EntryPoint.MainSave.DirtyMoney);
-          Function.Call(Hash.STAT_SET_INT, (InputArgument) Function.Call<int>(Hash.GET_HASH_KEY, (InputArgument) "SP0_TOTAL_CASH"), (InputArgument) (result + (int) ((double) num * 0.600000023841858)), (InputArgument) 1);
+          Function.Call(Hash.STAT_SET_INT, Function.Call<int>(Hash.GET_HASH_KEY, "SP0_TOTAL_CASH"), (result + (int) ((double) num * 0.600000023841858)), 1);
           EntryPoint.MainSave.DirtyMoney -= num;
           EntryPoint.MainSave.MoneyWithdrawn += (int) ((double) num * 0.600000023841858);
           Savegame.SaveProgress(EntryPoint.MainSave, EntryPoint.SAVE_PATH);
@@ -219,11 +219,11 @@ namespace HeistProject
           this._menu.Dispose();
           this.CreateTeam(setup.MaxCapacity);
           this._outfitMenu = new OutfitSelectionMenu(ourSet.Name, ourSet.Description, EntryPoint.Team);
-          this._outfitMenu.OnSelectionComplete += closure_1 ?? (closure_1 = (EventHandler) ((o, eventArgs) =>
-          {
-            EntryPoint.PrepareTeam();
-            this.StartScriptedHeist(setup.GetLogic());
-          }));
+            this._outfitMenu.OnSelectionComplete += (EventHandler)((o, eventArgs) =>
+            {
+                EntryPoint.PrepareTeam();
+                this.StartScriptedHeist(setup.GetLogic());
+            });
         });
         menuSetupList.Add(ourSet);
       }
@@ -243,11 +243,11 @@ namespace HeistProject
         this._menu.Dispose();
         this.CreateTeam(heist.MaxCapacity);
         this._outfitMenu = new OutfitSelectionMenu(ourSet1.Name, ourSet1.Description, EntryPoint.Team);
-        this._outfitMenu.OnSelectionComplete += closure_0 ?? (closure_0 = (EventHandler) ((o, eventArgs) =>
-        {
-          EntryPoint.PrepareTeam();
-          this.StartScriptedHeist(heist.GetLogic());
-        }));
+          this._outfitMenu.OnSelectionComplete += (EventHandler)((o, eventArgs) =>
+          {
+              EntryPoint.PrepareTeam();
+              this.StartScriptedHeist(heist.GetLogic());
+          });
       });
       menuSetupList.Add(ourSet1);
       this._menu = new SetupMenu(heist.Name, menuSetupList.ToArray());
@@ -263,11 +263,11 @@ namespace HeistProject
       ScriptHandler.Log("Spawning Player");
       Game.Player.Character.Position = this._spawnPoint - new Vector3(0.0f, 0.0f, 1f);
       Game.Player.Character.Armor = 200;
-      Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) Game.Player.Character, (InputArgument) 1593441988, (InputArgument) 200, (InputArgument) false, (InputArgument) true);
-      Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) Game.Player.Character, (InputArgument) -1063057011, (InputArgument) 5000, (InputArgument) false, (InputArgument) true);
-      Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) Game.Player.Character, (InputArgument) -37975472, (InputArgument) 5, (InputArgument) false, (InputArgument) true);
-      Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) Game.Player.Character, (InputArgument) 487013001, (InputArgument) 200, (InputArgument) false, (InputArgument) true);
-      Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) Game.Player.Character, (InputArgument) 324215364, (InputArgument) 1000, (InputArgument) false, (InputArgument) true);
+      Function.Call(Hash.GIVE_WEAPON_TO_PED, Game.Player.Character, 1593441988, 200, false, true);
+      Function.Call(Hash.GIVE_WEAPON_TO_PED, Game.Player.Character, -1063057011, 5000, false, true);
+      Function.Call(Hash.GIVE_WEAPON_TO_PED, Game.Player.Character, -37975472, 5, false, true);
+      Function.Call(Hash.GIVE_WEAPON_TO_PED, Game.Player.Character, 487013001, 200, false, true);
+      Function.Call(Hash.GIVE_WEAPON_TO_PED, Game.Player.Character, 324215364, 1000, false, true);
       ScriptHandler.Log("Spawning car...");
       Model model = new Model(VehicleHash.Stanier);
       model.Request(10000);
@@ -311,11 +311,11 @@ namespace HeistProject
     {
       for (int index = 1; index < EntryPoint.Team.Length; ++index)
       {
-        int num = Function.Call<int>(Hash.GET_PED_GROUP_INDEX, (InputArgument) Game.Player.Character.Handle);
-        Function.Call(Hash.SET_PED_AS_GROUP_MEMBER, (InputArgument) EntryPoint.Team[index].Handle, (InputArgument) num);
-        Function.Call(Hash.SET_GROUP_FORMATION_SPACING, (InputArgument) num, (InputArgument) 1.5f, (InputArgument) 3.5f, (InputArgument) 3.212837E+09f);
-        Function.Call(Hash._0x2E2F4240B3F24647, (InputArgument) EntryPoint.Team[index], (InputArgument) num, (InputArgument) false);
-        if (Blip.op_Equality(EntryPoint.Team[index].CurrentBlip, (Blip) null) || !EntryPoint.Team[index].CurrentBlip.Exists())
+        int num = Function.Call<int>(Hash.GET_PED_GROUP_INDEX, Game.Player.Character.Handle);
+        Function.Call(Hash.SET_PED_AS_GROUP_MEMBER, EntryPoint.Team[index].Handle, num);
+        Function.Call(Hash.SET_GROUP_FORMATION_SPACING, num, 1.5f, 3.5f, 3.212837E+09f);
+        Function.Call(Hash._0x2E2F4240B3F24647, EntryPoint.Team[index], num, false);
+        if (EntryPoint.Team[index].CurrentBlip == null || !EntryPoint.Team[index].CurrentBlip.Exists())
         {
           EntryPoint.Team[index].AddBlip();
           EntryPoint.Team[index].CurrentBlip.Color = BlipColor.Blue;
@@ -327,16 +327,16 @@ namespace HeistProject
         EntryPoint.Team[index].MaxHealth = 200;
         EntryPoint.Team[index].Health = 200;
         EntryPoint.Team[index].AlwaysDiesOnLowHealth = false;
-        Function.Call(Hash.SET_PED_COMBAT_MOVEMENT, (InputArgument) EntryPoint.Team[index].Handle, (InputArgument) 1);
-        Function.Call(Hash.SET_PED_HEARING_RANGE, (InputArgument) EntryPoint.Team[index], (InputArgument) 100f);
-        Function.Call(Hash.SET_PED_SEEING_RANGE, (InputArgument) EntryPoint.Team[index], (InputArgument) 100f);
-        Function.Call(Hash.SET_PED_COMBAT_RANGE, (InputArgument) EntryPoint.Team[index], (InputArgument) 1);
-        Function.Call(Hash.SET_PED_TO_INFORM_RESPECTED_FRIENDS, (InputArgument) EntryPoint.Team[index], (InputArgument) 100f, (InputArgument) 8);
-        Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) EntryPoint.Team[index], (InputArgument) 1593441988, (InputArgument) 200, (InputArgument) false, (InputArgument) true);
-        Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) EntryPoint.Team[index], (InputArgument) -1063057011, (InputArgument) 5000, (InputArgument) false, (InputArgument) true);
-        Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) EntryPoint.Team[index], (InputArgument) -37975472, (InputArgument) 5, (InputArgument) false, (InputArgument) true);
-        Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) EntryPoint.Team[index], (InputArgument) 487013001, (InputArgument) 200, (InputArgument) false, (InputArgument) true);
-        Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) EntryPoint.Team[index], (InputArgument) 324215364, (InputArgument) 1000, (InputArgument) false, (InputArgument) true);
+        Function.Call(Hash.SET_PED_COMBAT_MOVEMENT, EntryPoint.Team[index].Handle, 1);
+        Function.Call(Hash.SET_PED_HEARING_RANGE, EntryPoint.Team[index], 100f);
+        Function.Call(Hash.SET_PED_SEEING_RANGE, EntryPoint.Team[index], 100f);
+        Function.Call(Hash.SET_PED_COMBAT_RANGE, EntryPoint.Team[index], 1);
+        Function.Call(Hash.SET_PED_TO_INFORM_RESPECTED_FRIENDS, EntryPoint.Team[index], 100f, 8);
+        Function.Call(Hash.GIVE_WEAPON_TO_PED, EntryPoint.Team[index], 1593441988, 200, false, true);
+        Function.Call(Hash.GIVE_WEAPON_TO_PED, EntryPoint.Team[index], -1063057011, 5000, false, true);
+        Function.Call(Hash.GIVE_WEAPON_TO_PED, EntryPoint.Team[index], -37975472, 5, false, true);
+        Function.Call(Hash.GIVE_WEAPON_TO_PED, EntryPoint.Team[index], 487013001, 200, false, true);
+        Function.Call(Hash.GIVE_WEAPON_TO_PED, EntryPoint.Team[index], 324215364, 1000, false, true);
       }
     }
 
@@ -461,7 +461,7 @@ namespace HeistProject
       this._currentHeist.Update();
       for (int index = 1; index < EntryPoint.Team.Length; ++index)
       {
-        if (EntryPoint.Team[index].IsDead && Blip.op_Inequality(EntryPoint.Team[index].CurrentBlip, (Blip) null) && EntryPoint.Team[index].CurrentBlip.Exists())
+        if (EntryPoint.Team[index].IsDead && EntryPoint.Team[index].CurrentBlip != null && EntryPoint.Team[index].CurrentBlip.Exists())
           EntryPoint.Team[index].CurrentBlip.Remove();
       }
       if (this._currentHeist.HasFinished)

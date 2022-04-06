@@ -31,11 +31,11 @@ namespace HeistProject
 
     public static void RequestCollisions(this Model m, int timeout)
     {
-      Function.Call(Hash.REQUEST_COLLISION_FOR_MODEL, (InputArgument) m.Hash);
+      Function.Call(Hash.REQUEST_COLLISION_FOR_MODEL, m.Hash);
       DateTime now = DateTime.Now;
       do
       {
-        if (!Function.Call<bool>(Hash.HAS_COLLISION_FOR_MODEL_LOADED, (InputArgument) m.Hash))
+        if (!Function.Call<bool>(Hash.HAS_COLLISION_FOR_MODEL_LOADED, m.Hash))
           Script.Yield();
         else
           goto label_4;
@@ -45,7 +45,7 @@ namespace HeistProject
 label_4:;
     }
 
-    public static void BringVehicleToHalt(Vehicle veh) => Function.Call(Hash._0x260BE8F09E326A20, (InputArgument) 10f, (InputArgument) 1, (InputArgument) 0);
+    public static void BringVehicleToHalt(Vehicle veh) => Function.Call(Hash._0x260BE8F09E326A20, 10f, 1, 0);
 
     public static VehicleSeat GetPedSeat(Ped ped, Vehicle veh)
     {
@@ -138,31 +138,31 @@ label_4:;
       if (Game.Player.Character.Model.Hash == model.Hash)
         return;
       model.Request(10000);
-      Function.Call(Hash.SET_PLAYER_MODEL, new InputArgument(Game.Player), (InputArgument) model.Hash);
+      Function.Call(Hash.SET_PLAYER_MODEL, new InputArgument(Game.Player), model.Hash);
     }
 
     public static void DisplayHelpTextThisFrame(string text)
     {
-      Function.Call(Hash._0x8509B634FBE7DA11, (InputArgument) "STRING");
-      Function.Call(Hash._ADD_TEXT_COMPONENT_STRING, (InputArgument) text);
-      Function.Call(Hash._0x238FFE5C7B0498A6, (InputArgument) 0, (InputArgument) 1, (InputArgument) 0, (InputArgument) -1);
+      Function.Call(Hash._0x8509B634FBE7DA11, "STRING");
+      Function.Call(Hash._ADD_TEXT_COMPONENT_STRING, text);
+      Function.Call(Hash._0x238FFE5C7B0498A6, 0, 1, 0, -1);
     }
 
     public static void DisplayHelpText(string text)
     {
-      Function.Call(Hash._0x8509B634FBE7DA11, (InputArgument) "STRING");
-      Function.Call(Hash._ADD_TEXT_COMPONENT_STRING, (InputArgument) text);
-      Function.Call(Hash._0x238FFE5C7B0498A6, (InputArgument) 0, (InputArgument) 0, (InputArgument) 1, (InputArgument) -1);
+      Function.Call(Hash._0x8509B634FBE7DA11, "STRING");
+      Function.Call(Hash._ADD_TEXT_COMPONENT_STRING, text);
+      Function.Call(Hash._0x238FFE5C7B0498A6, 0, 0, 1, -1);
     }
 
-    public static void PlaySoundFrontend(string soundDict, string soundName) => Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) soundName, (InputArgument) soundDict);
+    public static void PlaySoundFrontend(string soundDict, string soundName) => Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, soundName, soundDict);
 
     public static bool HasPedDamagedEntity(Ped ped, Entity target, bool useLastVehicle = true)
     {
       bool flag = false;
       if (ped.IsInVehicle() | useLastVehicle)
-        flag = Function.Call<bool>(Hash.HAS_ENTITY_BEEN_DAMAGED_BY_ENTITY, (InputArgument) Function.Call<int>(Hash.GET_VEHICLE_PED_IS_IN, (InputArgument) ped.Handle, (InputArgument) useLastVehicle), (InputArgument) target.Handle, (InputArgument) true);
-      return Function.Call<bool>(Hash.HAS_ENTITY_BEEN_DAMAGED_BY_ENTITY, (InputArgument) ped.Handle, (InputArgument) target.Handle, (InputArgument) true) | flag;
+        flag = Function.Call<bool>(Hash.HAS_ENTITY_BEEN_DAMAGED_BY_ENTITY, Function.Call<int>(Hash.GET_VEHICLE_PED_IS_IN, ped.Handle, useLastVehicle), target.Handle, true);
+      return Function.Call<bool>(Hash.HAS_ENTITY_BEEN_DAMAGED_BY_ENTITY, ped.Handle, target.Handle, true) | flag;
     }
 
     public static void SendPictureNotification(
@@ -173,10 +173,10 @@ label_4:;
       string sender,
       string subject)
     {
-      Function.Call(Hash._SET_NOTIFICATION_TEXT_ENTRY, (InputArgument) "STRING");
-      Function.Call(Hash._ADD_TEXT_COMPONENT_STRING, (InputArgument) body);
-      Function.Call(Hash._0x1CCD9A37359072CF, (InputArgument) pic, (InputArgument) pic, (InputArgument) flash, (InputArgument) iconType, (InputArgument) sender, (InputArgument) subject);
-      Function.Call(Hash._0xF020C96915705B3A, (InputArgument) false, (InputArgument) true);
+      Function.Call(Hash._SET_NOTIFICATION_TEXT_ENTRY, "STRING");
+      Function.Call(Hash._ADD_TEXT_COMPONENT_STRING, body);
+      Function.Call(Hash._0x1CCD9A37359072CF, pic, pic, flash, iconType, sender, subject);
+      Function.Call(Hash._0xF020C96915705B3A, false, true);
     }
 
     public static void SendPictureNotification(
@@ -188,11 +188,11 @@ label_4:;
       string sender,
       string subject)
     {
-      Function.Call(Hash.REQUEST_STREAMED_TEXTURE_DICT, (InputArgument) picdict);
-      Function.Call(Hash._SET_NOTIFICATION_TEXT_ENTRY, (InputArgument) "STRING");
-      Function.Call(Hash._ADD_TEXT_COMPONENT_STRING, (InputArgument) body);
-      Function.Call(Hash._0x1CCD9A37359072CF, (InputArgument) picdict, (InputArgument) picname, (InputArgument) flash, (InputArgument) iconType, (InputArgument) sender, (InputArgument) subject);
-      Function.Call(Hash._0xF020C96915705B3A, (InputArgument) false, (InputArgument) true);
+      Function.Call(Hash.REQUEST_STREAMED_TEXTURE_DICT, picdict);
+      Function.Call(Hash._SET_NOTIFICATION_TEXT_ENTRY, "STRING");
+      Function.Call(Hash._ADD_TEXT_COMPONENT_STRING, body);
+      Function.Call(Hash._0x1CCD9A37359072CF, picdict, picname, flash, iconType, sender, subject);
+      Function.Call(Hash._0xF020C96915705B3A, false, true);
     }
 
     public static void SendLesterMessage(string message)
@@ -207,19 +207,19 @@ label_4:;
       Util.PlaySoundFrontend("Phone_SoundSet_Default", "Text_Arrive_Tone");
     }
 
-    public static bool IsVehicleDoorOpen(Vehicle veh, VehicleDoor door) => (double) Function.Call<float>(Hash.GET_VEHICLE_DOOR_ANGLE_RATIO, (InputArgument) veh, (InputArgument) (int) door) > 0.100000001490116 || veh.IsDoorBroken(door);
+    public static bool IsVehicleDoorOpen(Vehicle veh, VehicleDoor door) => (double) Function.Call<float>(Hash.GET_VEHICLE_DOOR_ANGLE_RATIO, veh, (int) door) > 0.100000001490116 || veh.IsDoorBroken(door);
 
-    public static void SetPedComponentVariation(Ped ped, int componentId, int id, int texture) => Function.Call(Hash.SET_PED_COMPONENT_VARIATION, (InputArgument) ped.Handle, (InputArgument) componentId, (InputArgument) id, (InputArgument) texture, (InputArgument) 2);
+    public static void SetPedComponentVariation(Ped ped, int componentId, int id, int texture) => Function.Call(Hash.SET_PED_COMPONENT_VARIATION, ped.Handle, componentId, id, texture, 2);
 
-    public static int GetPedDrawableVariation(Ped ped, int componentId) => Function.Call<int>(Hash.GET_PED_DRAWABLE_VARIATION, (InputArgument) ped.Handle, (InputArgument) componentId);
+    public static int GetPedDrawableVariation(Ped ped, int componentId) => Function.Call<int>(Hash.GET_PED_DRAWABLE_VARIATION, ped.Handle, componentId);
 
-    public static void SetPedAccessory(Ped ped, Util.HeistAccessory acc) => Function.Call(Hash.SET_PED_COMPONENT_VARIATION, (InputArgument) ped.Handle, (InputArgument) 5, (InputArgument) (int) acc, (InputArgument) 0, (InputArgument) 0);
+    public static void SetPedAccessory(Ped ped, Util.HeistAccessory acc) => Function.Call(Hash.SET_PED_COMPONENT_VARIATION, ped.Handle, 5, (int) acc, 0, 0);
 
-    public static void SetPedMask(Ped ped, int id, int texture) => Function.Call(Hash.SET_PED_COMPONENT_VARIATION, (InputArgument) ped.Handle, (InputArgument) 1, (InputArgument) id, (InputArgument) texture, (InputArgument) 2);
+    public static void SetPedMask(Ped ped, int id, int texture) => Function.Call(Hash.SET_PED_COMPONENT_VARIATION, ped.Handle, 1, id, texture, 2);
 
-    public static int GetComponentTextureVariations(Ped ped, int componentid, int drawableId) => Function.Call<int>(Hash.GET_NUMBER_OF_PED_TEXTURE_VARIATIONS, (InputArgument) ped.Handle, (InputArgument) componentid, (InputArgument) drawableId);
+    public static int GetComponentTextureVariations(Ped ped, int componentid, int drawableId) => Function.Call<int>(Hash.GET_NUMBER_OF_PED_TEXTURE_VARIATIONS, ped.Handle, componentid, drawableId);
 
-    public static int GetMaskTextureVariations(Ped ped, int drawableId) => Function.Call<int>(Hash.GET_NUMBER_OF_PED_TEXTURE_VARIATIONS, (InputArgument) ped.Handle, (InputArgument) 1, (InputArgument) drawableId);
+    public static int GetMaskTextureVariations(Ped ped, int drawableId) => Function.Call<int>(Hash.GET_NUMBER_OF_PED_TEXTURE_VARIATIONS, ped.Handle, 1, drawableId);
 
     public enum HeistAccessory
     {

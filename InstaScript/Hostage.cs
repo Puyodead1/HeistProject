@@ -51,7 +51,7 @@ namespace InstaScript
       this.Ped.Heading = info.Heading;
       this.Ped.RelationshipGroup = num;
       this.AnimSet = Hostage.GetAnimNameFromIndex(index);
-      Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) this.Ped.Handle, (InputArgument) PacificFinale.LoadDict("anim@heists@ornate_bank@hostages@intro"), (InputArgument) ("intro_loop_" + this.AnimSet), (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 1, (InputArgument) -8f, (InputArgument) 0, (InputArgument) 0, (InputArgument) 0);
+      Function.Call(Hash.TASK_PLAY_ANIM, this.Ped.Handle, PacificFinale.LoadDict("anim@heists@ornate_bank@hostages@intro"), ("intro_loop_" + this.AnimSet), 8f, 1f, -1, 1, -8f, 0, 0, 0);
     }
 
     public bool CanRebel()
@@ -78,14 +78,14 @@ namespace InstaScript
         "GENERIC_SHOCKED_HIGH",
         "GENERIC_SHOCKED_MED"
       };
-      Function.Call(Hash._PLAY_AMBIENT_SPEECH1, (InputArgument) this.Ped.Handle, (InputArgument) strArray[Util.SharedRandom.Next(strArray.Length)], (InputArgument) "SPEECH_PARAMS_FORCE_SHOUTED_CRITICAL", (InputArgument) 1);
+      Function.Call(Hash._PLAY_AMBIENT_SPEECH1, this.Ped.Handle, strArray[Util.SharedRandom.Next(strArray.Length)], "SPEECH_PARAMS_FORCE_SHOUTED_CRITICAL", 1);
     }
 
     public void Spook()
     {
       TaskSequence sequence = new TaskSequence();
-      Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) 0, (InputArgument) PacificFinale.LoadDict("anim@heists@ornate_bank@hostages@intro"), (InputArgument) ("intro_" + this.AnimSet), (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 0, (InputArgument) -8f, (InputArgument) 0, (InputArgument) 0, (InputArgument) 0);
-      Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) 0, (InputArgument) PacificFinale.LoadDict("anim@heists@ornate_bank@hostages@" + this.AnimSet + "@"), (InputArgument) "idle", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 1, (InputArgument) -8f, (InputArgument) 0, (InputArgument) 0, (InputArgument) 0);
+      Function.Call(Hash.TASK_PLAY_ANIM, 0, PacificFinale.LoadDict("anim@heists@ornate_bank@hostages@intro"), ("intro_" + this.AnimSet), 8f, 1f, -1, 0, -8f, 0, 0, 0);
+      Function.Call(Hash.TASK_PLAY_ANIM, 0, PacificFinale.LoadDict("anim@heists@ornate_bank@hostages@" + this.AnimSet + "@"), "idle", 8f, 1f, -1, 1, -8f, 0, 0, 0);
       sequence.Close();
       this.Ped.Task.PerformSequence(sequence);
       sequence.Dispose();
@@ -97,20 +97,20 @@ namespace InstaScript
       if (!this.CanRebel())
         return;
       TaskSequence sequence = new TaskSequence();
-      Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) 0, (InputArgument) PacificFinale.LoadDict("anim@heists@ornate_bank@hostages@" + this.AnimSet + "@"), (InputArgument) "reach", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 0, (InputArgument) -8f, (InputArgument) 0, (InputArgument) 0, (InputArgument) 0);
-      Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) 0, (InputArgument) PacificFinale.LoadDict("anim@heists@ornate_bank@hostages@" + this.AnimSet + "@"), (InputArgument) "pass", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 0, (InputArgument) -8f, (InputArgument) 0, (InputArgument) 0, (InputArgument) 0);
+      Function.Call(Hash.TASK_PLAY_ANIM, 0, PacificFinale.LoadDict("anim@heists@ornate_bank@hostages@" + this.AnimSet + "@"), "reach", 8f, 1f, -1, 0, -8f, 0, 0, 0);
+      Function.Call(Hash.TASK_PLAY_ANIM, 0, PacificFinale.LoadDict("anim@heists@ornate_bank@hostages@" + this.AnimSet + "@"), "pass", 8f, 1f, -1, 0, -8f, 0, 0, 0);
       if (this.HasGunForRebelling())
       {
         int num = World.AddRelationshipGroup("PACIFIC_STANDARD_FINALE_REBEL");
         World.SetRelationshipBetweenGroups(Relationship.Neutral, num, Game.Player.Character.RelationshipGroup);
         World.SetRelationshipBetweenGroups(Relationship.Neutral, Game.Player.Character.RelationshipGroup, num);
         this.Ped.RelationshipGroup = num;
-        Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) this.Ped, (InputArgument) 453432689, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
+        Function.Call(Hash.GIVE_WEAPON_TO_PED, this.Ped, 453432689, 1000, true, true);
         sequence.AddTask.ShootAt(EntryPoint.Team[Util.SharedRandom.Next(EntryPoint.Team.Length)], -1, FiringPattern.FullAuto);
         this.Scream();
       }
       else
-        Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) 0, (InputArgument) PacificFinale.LoadDict("anim@heists@ornate_bank@hostages@" + this.AnimSet + "@"), (InputArgument) "idle", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 1, (InputArgument) -8f, (InputArgument) 0, (InputArgument) 0, (InputArgument) 0);
+        Function.Call(Hash.TASK_PLAY_ANIM, 0, PacificFinale.LoadDict("anim@heists@ornate_bank@hostages@" + this.AnimSet + "@"), "idle", 8f, 1f, -1, 1, -8f, 0, 0, 0);
       sequence.Close();
       this.HasRebeled = true;
       this.Ped.Task.PerformSequence(sequence);

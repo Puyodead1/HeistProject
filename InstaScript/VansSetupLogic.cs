@@ -68,7 +68,7 @@ namespace InstaScript
         this._vans[index].Delete();
         this._drivers[index].Delete();
       }
-      if (Blip.op_Inequality(this._destBlip, (Blip) null))
+      if (this._destBlip != null)
         this._destBlip.Remove();
       UI.ShowSubtitle(" ");
     }

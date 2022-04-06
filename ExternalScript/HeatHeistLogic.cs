@@ -27,7 +27,7 @@ namespace ExternalScript
     public override void Start()
     {
       this._rand = new System.Random();
-      Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) Game.Player.Character, (InputArgument) 741814745, (InputArgument) 5, (InputArgument) true, (InputArgument) true);
+      Function.Call(Hash.GIVE_WEAPON_TO_PED,  Game.Player.Character,  741814745,  5,  true,  true);
       Util.SetPedAccessory(Game.Player.Character, Util.HeistAccessory.EmptyDuffelBag);
       this._guardRelGroup = World.AddRelationshipGroup("HEIST_GUARDS");
       World.SetRelationshipBetweenGroups(Relationship.Neutral, this._guardRelGroup, Game.Player.Character.RelationshipGroup);
@@ -39,7 +39,7 @@ namespace ExternalScript
       this._mainTarget.AddBlip();
       this._mainTarget.CurrentBlip.Sprite = BlipSprite.PoliceOfficer | BlipSprite.Helicopter;
       this._mainTarget.CurrentBlip.Color = BlipColor.Red;
-      Function.Call(Hash.SET_VEHICLE_DOORS_LOCKED, (InputArgument) this._mainTarget.Handle, (InputArgument) 1);
+      Function.Call(Hash.SET_VEHICLE_DOORS_LOCKED,  this._mainTarget.Handle,  1);
       model1.MarkAsNoLongerNeeded();
       this._guards = new Ped[2];
       for (int index = 0; index < 2; ++index)
@@ -63,11 +63,11 @@ namespace ExternalScript
             break;
         }
         guard.SetIntoVehicle(mainTarget, (VehicleSeat) seat);
-        Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) this._guards[index], (InputArgument) -1074790547, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
+        Function.Call(Hash.GIVE_WEAPON_TO_PED,  this._guards[index],  -1074790547,  1000,  true,  true);
         this._guards[index].BlockPermanentEvents = false;
         this._guards[index].RelationshipGroup = this._guardRelGroup;
         this._guards[index].Armor = 200;
-        Function.Call(Hash.SET_PED_COMBAT_MOVEMENT, (InputArgument) this._guards[index].Handle, (InputArgument) 1);
+        Function.Call(Hash.SET_PED_COMBAT_MOVEMENT,  this._guards[index].Handle,  1);
         model2.MarkAsNoLongerNeeded();
       }
       this._guards[0].Task.CruiseWithVehicle(this._mainTarget, 10f, 786603);
@@ -80,9 +80,9 @@ namespace ExternalScript
       this._mainTarget.Delete();
       for (int index = 0; index < this._guards.Length; ++index)
         this._guards[index].Delete();
-      if (Blip.op_Inequality(this._moneyBlip, (Blip) null))
+      if (this._moneyBlip != null)
         this._moneyBlip.Remove();
-      if (Pickup.op_Inequality(this._moneyPickup, (Pickup) null))
+      if (this._moneyPickup != null)
         this._moneyPickup.Delete();
       UI.ShowSubtitle("");
     }
@@ -102,7 +102,7 @@ namespace ExternalScript
         this._moneyBlip = World.CreateBlip(offsetInWorldCoords);
         this._moneyBlip.Color = BlipColor.Green;
         this._moneyBlip.Scale = 0.5f;
-        this._moneyPickup = new Pickup(Function.Call<int>(Hash.CREATE_PICKUP_ROTATE, (InputArgument) -562499202, (InputArgument) offsetInWorldCoords.X, (InputArgument) offsetInWorldCoords.Y, (InputArgument) offsetInWorldCoords.Z, (InputArgument) 0, (InputArgument) 0, (InputArgument) 0, (InputArgument) 1, (InputArgument) 10000, (InputArgument) 2, (InputArgument) 0, (InputArgument) 0));
+        this._moneyPickup = new Pickup(Function.Call<int>(Hash.CREATE_PICKUP_ROTATE,  -562499202,  offsetInWorldCoords.X,  offsetInWorldCoords.Y,  offsetInWorldCoords.Z,  0,  0,  0,  1,  10000,  2,  0,  0));
         UI.ShowSubtitle("Pick up the ~g~money.", 60000);
         Util.SendLesterMessage("They don't even know what hit'em! Nice job.");
         this.silentApproach = true;
@@ -116,9 +116,9 @@ namespace ExternalScript
           int num = 49;
           while (true)
           {
-            if (!Function.Call<bool>(Hash.HAS_ANIM_DICT_LOADED, (InputArgument) strArray[0]))
+            if (!Function.Call<bool>(Hash.HAS_ANIM_DICT_LOADED,  strArray[0]))
             {
-              Function.Call(Hash.REQUEST_ANIM_DICT, (InputArgument) strArray[0]);
+              Function.Call(Hash.REQUEST_ANIM_DICT,  strArray[0]);
               Script.Yield();
             }
             else
@@ -126,13 +126,13 @@ namespace ExternalScript
           }
           TaskSequence sequence1 = new TaskSequence();
           sequence1.AddTask.Wait(1000);
-          Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) new Ped(0), (InputArgument) strArray[0], (InputArgument) strArray[1], (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) num, (InputArgument) -8f, (InputArgument) false, (InputArgument) false, (InputArgument) false);
+          Function.Call(Hash.TASK_PLAY_ANIM,  new Ped(0),  strArray[0],  strArray[1],  8f,  1f,  -1,  num,  -8f,  false,  false,  false);
           sequence1.AddTask.LeaveVehicle(this._mainTarget, false);
           sequence1.AddTask.GoTo(this._mainTarget.GetOffsetInWorldCoords(new Vector3(-1f, 0.0f, 0.0f)), false);
           sequence1.Close();
           TaskSequence sequence2 = new TaskSequence();
           sequence2.AddTask.Wait(1000);
-          Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) new Ped(0), (InputArgument) strArray[0], (InputArgument) strArray[1], (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) num, (InputArgument) -8f, (InputArgument) false, (InputArgument) false, (InputArgument) false);
+          Function.Call(Hash.TASK_PLAY_ANIM,  new Ped(0),  strArray[0],  strArray[1],  8f,  1f,  -1,  num,  -8f,  false,  false,  false);
           sequence2.AddTask.LeaveVehicle(this._mainTarget, false);
           sequence2.AddTask.GoTo(this._mainTarget.GetOffsetInWorldCoords(new Vector3(0.0f, -6f, 0.0f)), false);
           sequence2.Close();
@@ -152,11 +152,11 @@ namespace ExternalScript
         this._moneyBlip = World.CreateBlip(offsetInWorldCoords);
         this._moneyBlip.Color = BlipColor.Green;
         this._moneyBlip.Scale = 0.5f;
-        this._moneyPickup = new Pickup(Function.Call<int>(Hash.CREATE_PICKUP_ROTATE, (InputArgument) -562499202, (InputArgument) offsetInWorldCoords.X, (InputArgument) offsetInWorldCoords.Y, (InputArgument) offsetInWorldCoords.Z, (InputArgument) 0, (InputArgument) 0, (InputArgument) 0, (InputArgument) 1, (InputArgument) 10000, (InputArgument) 2, (InputArgument) 0, (InputArgument) 0));
+        this._moneyPickup = new Pickup(Function.Call<int>(Hash.CREATE_PICKUP_ROTATE,  -562499202,  offsetInWorldCoords.X,  offsetInWorldCoords.Y,  offsetInWorldCoords.Z,  0,  0,  0,  1,  10000,  2,  0,  0));
         UI.ShowSubtitle("Pick up the ~g~money.", 60000);
         this.Stage = 3;
       }
-      if (this.Stage == 3 && Pickup.op_Inequality(this._moneyPickup, (Pickup) null) && Game.Player.Character.IsInRangeOf(this._moneyPickup.Position, 1.2f) && !Game.Player.Character.IsInVehicle())
+      if (this.Stage == 3 && this._moneyPickup != null && Game.Player.Character.IsInRangeOf(this._moneyPickup.Position, 1.2f) && !Game.Player.Character.IsInVehicle())
       {
         this._moneyBlip.Remove();
         Util.SetPedAccessory(Game.Player.Character, Util.HeistAccessory.FullDuffelBag);

@@ -37,7 +37,7 @@ namespace ExternalScript
       this._mainTarget.AddBlip();
       this._mainTarget.CurrentBlip.Sprite = BlipSprite.SonicWave;
       this._mainTarget.CurrentBlip.Color = BlipColor.Blue;
-      Function.Call(Hash.SET_VEHICLE_DOORS_LOCKED, (InputArgument) this._mainTarget.Handle, (InputArgument) 1);
+      Function.Call(Hash.SET_VEHICLE_DOORS_LOCKED, this._mainTarget.Handle, 1);
       model1.MarkAsNoLongerNeeded();
       this._guards = new Ped[2];
       for (int index = 0; index < 2; ++index)
@@ -61,11 +61,11 @@ namespace ExternalScript
             break;
         }
         guard.SetIntoVehicle(mainTarget, (VehicleSeat) seat);
-        Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) this._guards[index], (InputArgument) -1074790547, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
+        Function.Call(Hash.GIVE_WEAPON_TO_PED, this._guards[index], -1074790547, 1000, true, true);
         this._guards[index].BlockPermanentEvents = false;
         this._guards[index].RelationshipGroup = this._guardRelGroup;
         this._guards[index].Armor = 200;
-        Function.Call(Hash.SET_PED_COMBAT_MOVEMENT, (InputArgument) this._guards[index].Handle, (InputArgument) 3);
+        Function.Call(Hash.SET_PED_COMBAT_MOVEMENT, this._guards[index].Handle, 3);
         model2.MarkAsNoLongerNeeded();
       }
       this._guards[0].Task.CruiseWithVehicle(this._mainTarget, 10f, 786603);
@@ -76,7 +76,7 @@ namespace ExternalScript
       this.HasFinished = true;
       Util.SetPedAccessory(Game.Player.Character, Util.HeistAccessory.None);
       this._mainTarget.Delete();
-      if (Blip.op_Inequality(this._destination, (Blip) null))
+      if (this._destination != null)
         this._destination.Remove();
       for (int index = 0; index < this._guards.Length; ++index)
         this._guards[index].Delete();
@@ -108,7 +108,7 @@ namespace ExternalScript
       if (this.Stage == 2)
       {
         float num1 = (this._mainTarget.Position - Game.Player.Character.Position).Length();
-        float num2 = (float) ((Function.Call<bool>(Hash.HAS_ENTITY_CLEAR_LOS_TO_ENTITY, (InputArgument) this._mainTarget.Handle, (InputArgument) Game.Player.Character.Handle, (InputArgument) 17) ? 10.0 : 0.0) + ((double) num1 < 100.0 ? 100.0 - (double) num1 : 0.0));
+        float num2 = (float) ((Function.Call<bool>(Hash.HAS_ENTITY_CLEAR_LOS_TO_ENTITY, this._mainTarget.Handle, Game.Player.Character.Handle, 17) ? 10.0 : 0.0) + ((double) num1 < 100.0 ? 100.0 - (double) num1 : 0.0));
         if ((double) num2 > 100.0)
         {
           World.SetRelationshipBetweenGroups(Relationship.Hate, this._guardRelGroup, Game.Player.Character.RelationshipGroup);

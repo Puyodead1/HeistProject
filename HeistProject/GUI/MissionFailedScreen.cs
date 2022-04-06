@@ -29,11 +29,11 @@ namespace HeistProject.GUI
 
     public void Show()
     {
-      Function.Call(Hash._START_SCREEN_EFFECT, (InputArgument) "DeathFailOut", (InputArgument) -1, (InputArgument) 1);
+      Function.Call(Hash._START_SCREEN_EFFECT, "DeathFailOut", -1, 1);
       while (!Game.IsControlJustPressed(0, Control.FrontendAccept))
       {
-        Function.Call(Hash.DISABLE_ALL_CONTROL_ACTIONS, (InputArgument) 0);
-        Function.Call(Hash.ENABLE_CONTROL_ACTION, (InputArgument) 0, (InputArgument) 201);
+        Function.Call(Hash.DISABLE_ALL_CONTROL_ACTIONS, 0);
+        Function.Call(Hash.ENABLE_CONTROL_ACTION, 0, 201);
         SizeF resolutionMantainRatio = UIMenu.GetScreenResolutionMantainRatio();
         int int32 = Convert.ToInt32(resolutionMantainRatio.Width / 2f);
         new Sprite("mpentry", "mp_modenotselected_gradient", new Point(0, 30), new Size(Convert.ToInt32(resolutionMantainRatio.Width), 300), 0.0f, Color.FromArgb(230, (int) byte.MaxValue, (int) byte.MaxValue, (int) byte.MaxValue)).Draw();
@@ -44,7 +44,7 @@ namespace HeistProject.GUI
         scaleform.CallFunction("CLEAR_ALL");
         scaleform.CallFunction("TOGGLE_MOUSE_BUTTONS", (object) 0);
         scaleform.CallFunction("CREATE_CONTAINER");
-        scaleform.CallFunction("SET_DATA_SLOT", (object) 0, (object) Function.Call<string>(Hash._0x0499D7B09FC9B407, (InputArgument) 2, (InputArgument) 201, (InputArgument) 0), (object) "Continue");
+        scaleform.CallFunction("SET_DATA_SLOT", (object) 0, (object) Function.Call<string>(Hash._0x0499D7B09FC9B407, 2, 201, 0), (object) "Continue");
         scaleform.CallFunction("DRAW_INSTRUCTIONAL_BUTTONS", (object) -1);
         scaleform.Render2D();
         Script.Yield();

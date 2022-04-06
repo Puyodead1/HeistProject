@@ -50,9 +50,9 @@ namespace HeistProject.GUI.MainMenu
       {
         this._visible = value;
         if (value)
-          Function.Call(Hash._START_SCREEN_EFFECT, (InputArgument) "MinigameTransitionIn", (InputArgument) 0, (InputArgument) true);
+          Function.Call(Hash._START_SCREEN_EFFECT, "MinigameTransitionIn", 0, true);
         else
-          Function.Call(Hash._STOP_SCREEN_EFFECT, (InputArgument) "MinigameTransitionIn");
+          Function.Call(Hash._STOP_SCREEN_EFFECT, "MinigameTransitionIn");
       }
     }
 
@@ -70,15 +70,15 @@ namespace HeistProject.GUI.MainMenu
       this._sc.CallFunction("CLEAR_ALL");
       this._sc.CallFunction("TOGGLE_MOUSE_BUTTONS", (object) 0);
       this._sc.CallFunction("CREATE_CONTAINER");
-      this._sc.CallFunction("SET_DATA_SLOT", (object) 0, (object) Function.Call<string>(Hash._0x0499D7B09FC9B407, (InputArgument) 2, (InputArgument) 176, (InputArgument) 0), (object) "Select");
-      this._sc.CallFunction("SET_DATA_SLOT", (object) 1, (object) Function.Call<string>(Hash._0x0499D7B09FC9B407, (InputArgument) 2, (InputArgument) 177, (InputArgument) 0), (object) "Back");
-      this._sc.CallFunction("SET_DATA_SLOT", (object) 2, (object) Function.Call<string>(Hash._0x0499D7B09FC9B407, (InputArgument) 2, (InputArgument) 206, (InputArgument) 0), (object) "");
-      this._sc.CallFunction("SET_DATA_SLOT", (object) 3, (object) Function.Call<string>(Hash._0x0499D7B09FC9B407, (InputArgument) 2, (InputArgument) 205, (InputArgument) 0), (object) "Browse");
+      this._sc.CallFunction("SET_DATA_SLOT", (object) 0, (object) Function.Call<string>(Hash._0x0499D7B09FC9B407, 2, 176, 0), (object) "Select");
+      this._sc.CallFunction("SET_DATA_SLOT", (object) 1, (object) Function.Call<string>(Hash._0x0499D7B09FC9B407, 2, 177, 0), (object) "Back");
+      this._sc.CallFunction("SET_DATA_SLOT", (object) 2, (object) Function.Call<string>(Hash._0x0499D7B09FC9B407, 2, 206, 0), (object) "");
+      this._sc.CallFunction("SET_DATA_SLOT", (object) 3, (object) Function.Call<string>(Hash._0x0499D7B09FC9B407, 2, 205, 0), (object) "Browse");
     }
 
     public void ProcessControls()
     {
-      Function.Call(Hash.DISABLE_ALL_CONTROL_ACTIONS, (InputArgument) 0);
+      Function.Call(Hash.DISABLE_ALL_CONTROL_ACTIONS, 0);
       if (Game.IsControlJustPressed(0, Control.PhoneLeft) && this.IsControlInTabs)
       {
         this.Tabs[this.Index].Active = false;
@@ -88,7 +88,7 @@ namespace HeistProject.GUI.MainMenu
         this.Tabs[this.Index].Active = true;
         this.Tabs[this.Index].Focused = false;
         this.Tabs[this.Index].Visible = true;
-        Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "NAV_UP_DOWN", (InputArgument) "HUD_FRONTEND_DEFAULT_SOUNDSET", (InputArgument) 1);
+        Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
       }
       else if (Game.IsControlJustPressed(0, Control.PhoneRight) && this.IsControlInTabs)
       {
@@ -99,7 +99,7 @@ namespace HeistProject.GUI.MainMenu
         this.Tabs[this.Index].Active = true;
         this.Tabs[this.Index].Focused = false;
         this.Tabs[this.Index].Visible = true;
-        Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "NAV_UP_DOWN", (InputArgument) "HUD_FRONTEND_DEFAULT_SOUNDSET", (InputArgument) 1);
+        Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
       }
       else if (Game.IsControlJustPressed(0, Control.FrontendAccept) && this.IsControlInTabs)
       {
@@ -114,18 +114,18 @@ namespace HeistProject.GUI.MainMenu
           this.Tabs[this.Index].JustOpened = true;
           this.Tabs[this.Index].OnActivated();
         }
-        Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "SELECT", (InputArgument) "HUD_FRONTEND_DEFAULT_SOUNDSET", (InputArgument) 1);
+        Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
       }
       else if (Game.IsControlJustPressed(0, Control.PhoneCancel) && !this.IsControlInTabs)
       {
         this.Tabs[this.Index].Focused = false;
         this.IsControlInTabs = true;
-        Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "BACK", (InputArgument) "HUD_FRONTEND_DEFAULT_SOUNDSET", (InputArgument) 1);
+        Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "BACK", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
       }
       else if (Game.IsControlJustPressed(0, Control.PhoneCancel) && this.IsControlInTabs)
       {
         this.Visible = false;
-        Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "BACK", (InputArgument) "HUD_FRONTEND_DEFAULT_SOUNDSET", (InputArgument) 1);
+        Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "BACK", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
         EventHandler onMenuClose = this.OnMenuClose;
         if (onMenuClose == null)
           return;
@@ -141,7 +141,7 @@ namespace HeistProject.GUI.MainMenu
         this.Tabs[this.Index].Focused = false;
         this.Tabs[this.Index].Visible = true;
         this.IsControlInTabs = true;
-        Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "NAV_UP_DOWN", (InputArgument) "HUD_FRONTEND_DEFAULT_SOUNDSET", (InputArgument) 1);
+        Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
       }
       else
       {
@@ -155,7 +155,7 @@ namespace HeistProject.GUI.MainMenu
         this.Tabs[this.Index].Focused = false;
         this.Tabs[this.Index].Visible = true;
         this.IsControlInTabs = true;
-        Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "NAV_UP_DOWN", (InputArgument) "HUD_FRONTEND_DEFAULT_SOUNDSET", (InputArgument) 1);
+        Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
       }
     }
 

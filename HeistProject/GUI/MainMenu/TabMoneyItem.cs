@@ -27,7 +27,7 @@ namespace HeistProject.GUI.MainMenu
       if (!Game.IsControlJustPressed(0, Control.PhoneSelect))
         return;
       OutputArgument outputArgument = new OutputArgument();
-      Function.Call(Hash.STAT_GET_INT, (InputArgument) Function.Call<int>(Hash.GET_HASH_KEY, (InputArgument) "SP0_TOTAL_CASH"), (InputArgument) outputArgument, (InputArgument) -1);
+      Function.Call(Hash.STAT_GET_INT, Function.Call<int>(Hash.GET_HASH_KEY, "SP0_TOTAL_CASH"), outputArgument, -1);
       int result = outputArgument.GetResult<int>();
       if (result < 10000)
       {
@@ -35,7 +35,7 @@ namespace HeistProject.GUI.MainMenu
       }
       else
       {
-        Function.Call(Hash.STAT_SET_INT, (InputArgument) Function.Call<int>(Hash.GET_HASH_KEY, (InputArgument) "SP0_TOTAL_CASH"), (InputArgument) (result - 10000), (InputArgument) 1);
+        Function.Call(Hash.STAT_SET_INT, Function.Call<int>(Hash.GET_HASH_KEY, "SP0_TOTAL_CASH"), (result - 10000), 1);
         EntryPoint.MainSave.DirtyMoney += 10000;
         Savegame.SaveProgress(EntryPoint.MainSave, EntryPoint.SAVE_PATH);
         Util.SendFleecaMessage(10000.ToString("C0") + " have been transferred to your account!");
@@ -68,7 +68,7 @@ namespace HeistProject.GUI.MainMenu
       base.Draw();
       Scaleform scaleform = new Scaleform(0);
       scaleform.Load("instructional_buttons");
-      scaleform.CallFunction("SET_DATA_SLOT", (object) 0, (object) Function.Call<string>(Hash._0x0499D7B09FC9B407, (InputArgument) 2, (InputArgument) 176, (InputArgument) 0), (object) "Transfer Money");
+      scaleform.CallFunction("SET_DATA_SLOT", (object) 0, (object) Function.Call<string>(Hash._0x0499D7B09FC9B407, 2, 176, 0), (object) "Transfer Money");
     }
   }
 }

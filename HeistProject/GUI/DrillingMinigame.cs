@@ -103,7 +103,7 @@ namespace HeistProject.GUI
       DrillingMinigame.HoleDepth = 0.0f;
       DrillingMinigame.DrillPosition = 0.0f;
       DrillingMinigame.f2 = 0;
-      Function.Call(Hash.START_AUDIO_SCENE, (InputArgument) "DLC_HEIST_MINIGAME_FLEECA_DRILLING_SCENE");
+      Function.Call(Hash.START_AUDIO_SCENE, "DLC_HEIST_MINIGAME_FLEECA_DRILLING_SCENE");
     }
 
     public static void Update()
@@ -151,7 +151,7 @@ namespace HeistProject.GUI
           DrillingMinigame.bit5 = false;
           if (!DrillingMinigame.hasInit)
           {
-            Function.Call(Hash._0x3D42B92563939375, (InputArgument) "MP DRILL MINIGAME");
+            Function.Call(Hash._0x3D42B92563939375, "MP DRILL MINIGAME");
             DrillingMinigame.hasInit = true;
             break;
           }
@@ -166,25 +166,25 @@ namespace HeistProject.GUI
           }
           else
           {
-            DrillingMinigame.f8 = Function.Call<float>(Hash.GET_CONTROL_NORMAL, (InputArgument) 0, (InputArgument) 218);
-            if (Function.Call<bool>(Hash._0xA571D46727E2B718, (InputArgument) 0))
+            DrillingMinigame.f8 = Function.Call<float>(Hash.GET_CONTROL_NORMAL, 0, 218);
+            if (Function.Call<bool>(Hash._0xA571D46727E2B718, 0))
             {
               if (Function.Call<bool>(Hash._0xE1615EC03B3BB4FD))
-                DrillingMinigame.f7 += (float) ((double) Function.Call<float>(Hash.GET_CONTROL_NORMAL, (InputArgument) 0, (InputArgument) 219) * 0.25);
+                DrillingMinigame.f7 += (float) ((double) Function.Call<float>(Hash.GET_CONTROL_NORMAL, 0, 219) * 0.25);
               else
-                DrillingMinigame.f7 -= (float) ((double) Function.Call<float>(Hash.GET_CONTROL_NORMAL, (InputArgument) 0, (InputArgument) 219) * 0.25);
+                DrillingMinigame.f7 -= (float) ((double) Function.Call<float>(Hash.GET_CONTROL_NORMAL, 0, 219) * 0.25);
             }
             else
-              DrillingMinigame.f7 = Function.Call<float>(Hash.GET_CONTROL_NORMAL, (InputArgument) 0, (InputArgument) 196);
-            DrillingMinigame.f9 = Function.Call<float>(Hash.GET_CONTROL_NORMAL, (InputArgument) 0, (InputArgument) 196);
+              DrillingMinigame.f7 = Function.Call<float>(Hash.GET_CONTROL_NORMAL, 0, 196);
+            DrillingMinigame.f9 = Function.Call<float>(Hash.GET_CONTROL_NORMAL, 0, 196);
           }
           if ((double) DrillingMinigame.f7 < 0.0)
             DrillingMinigame.f7 = 0.0f;
-          if (!Function.Call<bool>(Hash._0xA571D46727E2B718, (InputArgument) 0))
+          if (!Function.Call<bool>(Hash._0xA571D46727E2B718, 0))
             DrillingMinigame.f7 /= 0.82f;
           if ((double) DrillingMinigame.f7 > 1.0)
             DrillingMinigame.f7 = 1f;
-          if (!Function.Call<bool>(Hash._0xA571D46727E2B718, (InputArgument) 0) && (double) DrillingMinigame.f9 < 0.0299999993294477)
+          if (!Function.Call<bool>(Hash._0xA571D46727E2B718, 0) && (double) DrillingMinigame.f9 < 0.0299999993294477)
             DrillingMinigame.f9 = 0.0f;
           DrillingMinigame.fA -= (float) (0.400000005960464 + 0.200000002980232 * (1.0 - (double) DrillingMinigame.f9)) * Function.Call<float>(Hash.TIMESTEP);
           if ((double) DrillingMinigame.fA < 0.0)
@@ -208,11 +208,11 @@ namespace HeistProject.GUI
             if ((double) DrillingMinigame.f9 > 0.0)
             {
               if ((double) DrillingMinigame.f7 < (double) DrillingMinigame.fD)
-                Function.Call(Hash.SET_PAD_SHAKE, (InputArgument) 2, (InputArgument) 200, (InputArgument) (15f + (float) Math.Round((double) DrillingMinigame.f9 * 45.0) + (float) Math.Round((double) DrillingMinigame.fA * 45.0)));
+                Function.Call(Hash.SET_PAD_SHAKE, 2, 200, (15f + (float) Math.Round((double) DrillingMinigame.f9 * 45.0) + (float) Math.Round((double) DrillingMinigame.fA * 45.0)));
               else if ((double) DrillingMinigame.f7 > (double) DrillingMinigame.fE)
               {
                 DrillingMinigame.fF += (float) (0.349999994039536 + (double) DrillingMinigame.f9 * 0.200000002980232) * Function.Call<float>(Hash.TIMESTEP);
-                Function.Call(Hash.SET_PAD_SHAKE, (InputArgument) 2, (InputArgument) 200, (InputArgument) 200);
+                Function.Call(Hash.SET_PAD_SHAKE, 2, 200, 200);
               }
               else
               {
@@ -220,11 +220,11 @@ namespace HeistProject.GUI
                 if ((double) DrillingMinigame.fB >= 1.0)
                   DrillingMinigame.fB = 1f;
                 DrillingMinigame.bit0 = true;
-                Function.Call(Hash.SET_PAD_SHAKE, (InputArgument) 2, (InputArgument) 200, (InputArgument) (30f + (float) Math.Round((double) DrillingMinigame.f9 * 60.0) + (float) Math.Round((double) DrillingMinigame.fA * 60.0)));
+                Function.Call(Hash.SET_PAD_SHAKE, 2, 200, (30f + (float) Math.Round((double) DrillingMinigame.f9 * 60.0) + (float) Math.Round((double) DrillingMinigame.fA * 60.0)));
               }
             }
             else if ((double) DrillingMinigame.f7 > (double) DrillingMinigame.fE)
-              Function.Call(Hash.SET_PAD_SHAKE, (InputArgument) 2, (InputArgument) 200, (InputArgument) 30);
+              Function.Call(Hash.SET_PAD_SHAKE, 2, 200, 30);
           }
           else
             DrillingMinigame.f12 = 0.0f;
@@ -243,8 +243,8 @@ namespace HeistProject.GUI
             DrillingMinigame.f15 = DrillingMinigame.fB;
           if ((double) DrillingMinigame.f7 > (double) DrillingMinigame.fE)
           {
-            if ((double) Function.Call<float>(Hash.ABSF, (InputArgument) (DrillingMinigame.f17 - DrillingMinigame.f16)) < 1.0 / 500.0)
-              DrillingMinigame.f16 = Function.Call<float>(Hash.GET_RANDOM_FLOAT_IN_RANGE, (InputArgument) 0.04f, (InputArgument) 0.0f);
+            if ((double) Function.Call<float>(Hash.ABSF, (DrillingMinigame.f17 - DrillingMinigame.f16)) < 1.0 / 500.0)
+              DrillingMinigame.f16 = Function.Call<float>(Hash.GET_RANDOM_FLOAT_IN_RANGE, 0.04f, 0.0f);
           }
           else
             DrillingMinigame.f17 = 0.0f;
@@ -266,7 +266,7 @@ namespace HeistProject.GUI
             case 0:
               if ((double) DrillingMinigame.fB > 0.324999988079071)
               {
-                Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "Drill_Pin_Break", (InputArgument) "DLC_HEIST_FLEECA_SOUNDSET", (InputArgument) 1);
+                Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "Drill_Pin_Break", "DLC_HEIST_FLEECA_SOUNDSET", 1);
                 if ((double) DrillingMinigame.fB < 0.330000013113022)
                   DrillingMinigame.fB = 0.33f;
                 DrillingMinigame.fB += 0.01f;
@@ -279,7 +279,7 @@ namespace HeistProject.GUI
               DrillingMinigame.f13 += (float) ((0.0599999986588955 - (double) DrillingMinigame.f13) * 0.5);
               if ((double) DrillingMinigame.fB > 0.474999994039536)
               {
-                Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "Drill_Pin_Break", (InputArgument) "DLC_HEIST_FLEECA_SOUNDSET", (InputArgument) 1);
+                Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "Drill_Pin_Break", "DLC_HEIST_FLEECA_SOUNDSET", 1);
                 if ((double) DrillingMinigame.fB < 0.479999989271164)
                   DrillingMinigame.fB = 0.48f;
                 DrillingMinigame.fB += 0.01f;
@@ -292,7 +292,7 @@ namespace HeistProject.GUI
               DrillingMinigame.f13 += (float) ((0.119999997317791 - (double) DrillingMinigame.f13) * 0.5);
               if ((double) DrillingMinigame.fB > 0.625)
               {
-                Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "Drill_Pin_Break", (InputArgument) "DLC_HEIST_FLEECA_SOUNDSET", (InputArgument) 1);
+                Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "Drill_Pin_Break", "DLC_HEIST_FLEECA_SOUNDSET", 1);
                 if ((double) DrillingMinigame.fB < 0.629999995231628)
                   DrillingMinigame.fB = 0.63f;
                 DrillingMinigame.fB += 0.01f;
@@ -305,13 +305,13 @@ namespace HeistProject.GUI
               DrillingMinigame.f13 += (float) ((0.180000007152557 - (double) DrillingMinigame.f13) * 0.5);
               if ((double) DrillingMinigame.fB > 0.774999976158142)
               {
-                Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "Drill_Pin_Break", (InputArgument) "DLC_HEIST_FLEECA_SOUNDSET", (InputArgument) 1);
+                Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "Drill_Pin_Break", "DLC_HEIST_FLEECA_SOUNDSET", 1);
                 if ((double) DrillingMinigame.fB < 0.479999989271164)
                   DrillingMinigame.fB = 0.48f;
                 DrillingMinigame.fB += 0.01f;
                 DrillingMinigame.fA = 1f;
                 ++DrillingMinigame.f6;
-                Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "Camera_Destroy", (InputArgument) "DLC_HEIST_FLEECA_SOUNDSET", (InputArgument) 1);
+                Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "Camera_Destroy", "DLC_HEIST_FLEECA_SOUNDSET", 1);
                 Action drillingComplete = DrillingMinigame.OnDrillingComplete;
                 if (drillingComplete != null)
                 {
@@ -346,7 +346,7 @@ namespace HeistProject.GUI
 
     public static float subroutine185d(float a_0, float a_1, float a_2)
     {
-      float num = (float) ((1.0 - (double) Function.Call<float>(Hash.COS, (InputArgument) (float) ((double) a_2 * 57.2957801818848 * 3.14159274101257))) * 0.5);
+      float num = (float) ((1.0 - (double) Function.Call<float>(Hash.COS, (float) ((double) a_2 * 57.2957801818848 * 3.14159274101257))) * 0.5);
       return (float) ((double) a_0 * (1.0 - (double) num) + (double) a_1 * (double) num);
     }
 
@@ -363,7 +363,7 @@ namespace HeistProject.GUI
       if (DrillingMinigame._sc.Handle == 0)
       {
         DrillingMinigame._sc.Load("drilling");
-        Function.Call(Hash._0x3D42B92563939375, (InputArgument) "MP DRILL MINIGAME");
+        Function.Call(Hash._0x3D42B92563939375, "MP DRILL MINIGAME");
       }
       Function.Call(Hash._0x25F87B30C382FCA7);
       DrillingMinigame._sc.Render2D();

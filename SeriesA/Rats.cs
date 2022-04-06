@@ -105,22 +105,22 @@ namespace SeriesA
         {
           Ped ped = (Ped) entity;
           ped.RelationshipGroup = num2;
-          Function.Call(Hash.SET_PED_COMBAT_MOVEMENT, (InputArgument) ped.Handle, (InputArgument) 1);
+          Function.Call(Hash.SET_PED_COMBAT_MOVEMENT,  ped.Handle,  1);
           ped.BlockPermanentEvents = false;
-          Function.Call(Hash.SET_PED_HEARING_RANGE, (InputArgument) ped, (InputArgument) 100f);
-          Function.Call(Hash.SET_PED_SEEING_RANGE, (InputArgument) ped, (InputArgument) 100f);
-          Function.Call(Hash.SET_PED_COMBAT_RANGE, (InputArgument) ped, (InputArgument) 1);
+          Function.Call(Hash.SET_PED_HEARING_RANGE,  ped,  100f);
+          Function.Call(Hash.SET_PED_SEEING_RANGE,  ped,  100f);
+          Function.Call(Hash.SET_PED_COMBAT_RANGE,  ped,  1);
           ped.AddBlip();
           ped.CurrentBlip.Sprite = BlipSprite.Enemy;
           ped.CurrentBlip.Color = BlipColor.Red;
           ped.CurrentBlip.Scale = 0.7f;
           ped.CurrentBlip.Alpha = 0;
-          Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) ped, (InputArgument) 324215364, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
-          Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) ped, (InputArgument) 453432689, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
-          Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) ped, (InputArgument) -1074790547, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
+          Function.Call(Hash.GIVE_WEAPON_TO_PED,  ped,  324215364,  1000,  true,  true);
+          Function.Call(Hash.GIVE_WEAPON_TO_PED,  ped,  453432689,  1000,  true,  true);
+          Function.Call(Hash.GIVE_WEAPON_TO_PED,  ped,  -1074790547,  1000,  true,  true);
           if (num3 >= 9)
-            Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) ped, (InputArgument) 100416529, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
-          Function.Call(Hash.TASK_START_SCENARIO_IN_PLACE, (InputArgument) ped, (InputArgument) strArray[Util.SharedRandom.Next(strArray.Length)], (InputArgument) 0, (InputArgument) false);
+            Function.Call(Hash.GIVE_WEAPON_TO_PED,  ped,  100416529,  1000,  true,  true);
+          Function.Call(Hash.TASK_START_SCENARIO_IN_PLACE,  ped,  strArray[Util.SharedRandom.Next(strArray.Length)],  0,  false);
           this._enemies.Add(ped);
           ++num3;
         }
@@ -142,7 +142,7 @@ namespace SeriesA
         entity.Delete();
       foreach (Entity entity in this._hydrogen)
         entity.Delete();
-      if (Blip.op_Inequality(this._destBlip, (Blip) null))
+      if (this._destBlip != null)
         this._destBlip.Remove();
       UI.ShowSubtitle("");
     }
@@ -161,7 +161,7 @@ namespace SeriesA
         Util.DrawEntryMarker(this._methlabPosTarget, 3f);
       foreach (Entity entity in this._cleanup)
       {
-        if (!(entity == (Entity) null) && entity.Model.IsPed && !Blip.op_Equality(entity.CurrentBlip, (Blip) null) && entity.CurrentBlip.Alpha != 0 && entity.IsDead)
+        if (!(entity == (Entity) null) && entity.Model.IsPed && entity.CurrentBlip != null && entity.CurrentBlip.Alpha != 0 && entity.IsDead)
           entity.CurrentBlip.Alpha = 0;
       }
       if (this.Stage == 0)
@@ -198,7 +198,7 @@ namespace SeriesA
         for (int index = this._muriaticAcid.Count - 1; index >= 0; --index)
         {
           Entity entity = this._muriaticAcid[index];
-          if (Function.Call<bool>(Hash.HAS_OBJECT_BEEN_BROKEN, (InputArgument) entity.Handle))
+          if (Function.Call<bool>(Hash.HAS_OBJECT_BEEN_BROKEN,  entity.Handle))
           {
             Model mod = new Model(-1414337382);
             mod.Request(10000);
@@ -214,7 +214,7 @@ namespace SeriesA
           }
           if (!this._hasLabAcid && !this._hasPlayerAcid)
           {
-            Function.Call((Hash) 17626695965285041557, (InputArgument) entity.Position.X, (InputArgument) entity.Position.Y, (InputArgument) entity.Position.Z, (InputArgument) (int) byte.MaxValue, (InputArgument) 0, (InputArgument) 0, (InputArgument) 0.8f, (InputArgument) 1f, (InputArgument) 1f);
+            Function.Call((Hash) 17626695965285041557,  entity.Position.X,  entity.Position.Y,  entity.Position.Z,  (int) byte.MaxValue,  0,  0,  0.8f,  1f,  1f);
             if (flag = flag || Game.Player.Character.IsInRangeOf(entity.Position, 2f))
             {
               Util.DisplayHelpTextThisFrame("Press ~INPUT_CONTEXT~ to pick up Muriatic Acid.");
@@ -226,9 +226,9 @@ namespace SeriesA
                 this._hasPlayerAcid = true;
                 UI.Notify("~g~Acid: " + this._hasPlayerAcid.ToString() + " Hyd: " + this._hasPlayerHydrogen.ToString() + " Soda: " + this._hasPlayerSoda.ToString());
                 Util.SetPedAccessory(Game.Player.Character, Util.HeistAccessory.FullGreenDuffelBag);
-                if (Blip.op_Equality(this._destBlip, (Blip) null))
+                if (this._destBlip == null)
                   this._destBlip = World.CreateBlip(this._mehlabPos);
-                Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "ROBBERY_MONEY_TOTAL", (InputArgument) "HUD_FRONTEND_CUSTOM_SOUNDSET", (InputArgument) 1);
+                Function.Call(Hash.PLAY_SOUND_FRONTEND,  -1,  "ROBBERY_MONEY_TOTAL",  "HUD_FRONTEND_CUSTOM_SOUNDSET",  1);
                 UI.ShowSubtitle("Add the Muriatic Acid to the ~y~meth lab~w~ or find another ~g~ingredient~w~.", 120000);
                 return;
               }
@@ -238,7 +238,7 @@ namespace SeriesA
         for (int index = this._hydrogen.Count - 1; index >= 0; --index)
         {
           Entity entity = this._hydrogen[index];
-          if (Function.Call<bool>(Hash.HAS_OBJECT_BEEN_BROKEN, (InputArgument) entity.Handle))
+          if (Function.Call<bool>(Hash.HAS_OBJECT_BEEN_BROKEN,  entity.Handle))
           {
             Model mod = new Model(-1382355819);
             mod.Request(10000);
@@ -254,7 +254,7 @@ namespace SeriesA
           }
           if (!this._hasLabHydrogen && !this._hasPlayerHydrogen)
           {
-            Function.Call((Hash) 17626695965285041557, (InputArgument) entity.Position.X, (InputArgument) entity.Position.Y, (InputArgument) entity.Position.Z, (InputArgument) 0, (InputArgument) (int) byte.MaxValue, (InputArgument) 0, (InputArgument) 0.8f, (InputArgument) 1f, (InputArgument) 1f);
+            Function.Call((Hash) 17626695965285041557,  entity.Position.X,  entity.Position.Y,  entity.Position.Z,  0,  (int) byte.MaxValue,  0,  0.8f,  1f,  1f);
             if (flag = flag || Game.Player.Character.IsInRangeOf(entity.Position, 2f))
             {
               Util.DisplayHelpTextThisFrame("Press ~INPUT_CONTEXT~ to pick up Hydrogen Chloride.");
@@ -266,9 +266,9 @@ namespace SeriesA
                 this._hasPlayerHydrogen = true;
                 UI.Notify("~g~Acid: " + this._hasPlayerAcid.ToString() + " Hyd: " + this._hasPlayerHydrogen.ToString() + " Soda: " + this._hasPlayerSoda.ToString());
                 Util.SetPedAccessory(Game.Player.Character, Util.HeistAccessory.FullGreenDuffelBag);
-                if (Blip.op_Equality(this._destBlip, (Blip) null))
+                if (this._destBlip == null)
                   this._destBlip = World.CreateBlip(this._mehlabPos);
-                Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "ROBBERY_MONEY_TOTAL", (InputArgument) "HUD_FRONTEND_CUSTOM_SOUNDSET", (InputArgument) 1);
+                Function.Call(Hash.PLAY_SOUND_FRONTEND,  -1,  "ROBBERY_MONEY_TOTAL",  "HUD_FRONTEND_CUSTOM_SOUNDSET",  1);
                 UI.ShowSubtitle("Add the Hydrogen Chloride to the ~y~meth lab~w~ or find another ~g~ingredient~w~.", 120000);
                 return;
               }
@@ -278,7 +278,7 @@ namespace SeriesA
         for (int index = this._causticSoda.Count - 1; index >= 0; --index)
         {
           Entity entity = this._causticSoda[index];
-          if (Function.Call<bool>(Hash.HAS_OBJECT_BEEN_BROKEN, (InputArgument) entity.Handle))
+          if (Function.Call<bool>(Hash.HAS_OBJECT_BEEN_BROKEN,  entity.Handle))
           {
             Model mod = new Model(-374844025);
             mod.Request(10000);
@@ -294,7 +294,7 @@ namespace SeriesA
           }
           if (!this._hasLabSoda && !this._hasPlayerSoda)
           {
-            Function.Call((Hash) 17626695965285041557, (InputArgument) entity.Position.X, (InputArgument) entity.Position.Y, (InputArgument) entity.Position.Z, (InputArgument) 0, (InputArgument) 0, (InputArgument) (int) byte.MaxValue, (InputArgument) 0.8f, (InputArgument) 1f, (InputArgument) 1f);
+            Function.Call((Hash) 17626695965285041557,  entity.Position.X,  entity.Position.Y,  entity.Position.Z,  0,  0,  (int) byte.MaxValue,  0.8f,  1f,  1f);
             if (flag = flag || Game.Player.Character.IsInRangeOf(entity.Position, 2f))
             {
               Util.DisplayHelpTextThisFrame("Press ~INPUT_CONTEXT~ to pick up Caustic Soda.");
@@ -306,9 +306,9 @@ namespace SeriesA
                 this._hasPlayerSoda = true;
                 UI.Notify("~g~Acid: " + this._hasPlayerAcid.ToString() + " Hyd: " + this._hasPlayerHydrogen.ToString() + " Soda: " + this._hasPlayerSoda.ToString());
                 Util.SetPedAccessory(Game.Player.Character, Util.HeistAccessory.FullGreenDuffelBag);
-                if (Blip.op_Equality(this._destBlip, (Blip) null))
+                if (this._destBlip == null)
                   this._destBlip = World.CreateBlip(this._mehlabPos);
-                Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "ROBBERY_MONEY_TOTAL", (InputArgument) "HUD_FRONTEND_CUSTOM_SOUNDSET", (InputArgument) 1);
+                Function.Call(Hash.PLAY_SOUND_FRONTEND,  -1,  "ROBBERY_MONEY_TOTAL",  "HUD_FRONTEND_CUSTOM_SOUNDSET",  1);
                 UI.ShowSubtitle("Add the Caustic Soda to the ~y~meth lab~w~ or find another ~g~ingredient~w~.", 120000);
                 return;
               }

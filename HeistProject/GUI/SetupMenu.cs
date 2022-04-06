@@ -51,7 +51,7 @@ namespace HeistProject.GUI
       model1.MarkAsNoLongerNeeded();
       this.Visible = true;
       this._startup = DateTime.Now;
-      Function.Call(Hash.REQUEST_SCRIPT_AUDIO_BANK, (InputArgument) "DLC_HEIST_PLANNING_BOARD_SOUNDS", (InputArgument) 0);
+      Function.Call(Hash.REQUEST_SCRIPT_AUDIO_BANK, "DLC_HEIST_PLANNING_BOARD_SOUNDS", 0);
       Game.Player.CanControlCharacter = false;
       Model model2 = new Model("hei_prop_dlc_heist_board");
       model2.Request(10000);
@@ -118,7 +118,7 @@ namespace HeistProject.GUI
       HeistBoard.Draw(this._scaleformPosition, this._scaleformRotation, this._scaleformScale);
       HeistMap.Draw3D(this._mapPosition, this._mapRotation, this._mapScale);
       Vector3 vector3 = this._board.Position + new Vector3(0.0f, 1f, 0.0f) - this._spotlightPos;
-      Function.Call(Hash._0x5BCA583A583194DB, (InputArgument) this._spotlightPos.X, (InputArgument) this._spotlightPos.Y, (InputArgument) this._spotlightPos.Z, (InputArgument) vector3.X, (InputArgument) vector3.Y, (InputArgument) vector3.Z, (InputArgument) (int) byte.MaxValue, (InputArgument) (int) byte.MaxValue, (InputArgument) (int) byte.MaxValue, (InputArgument) vector3.Length(), (InputArgument) 10f, (InputArgument) 10f, (InputArgument) 100f, (InputArgument) 1f, (InputArgument) 1f);
+      Function.Call(Hash._0x5BCA583A583194DB, this._spotlightPos.X, this._spotlightPos.Y, this._spotlightPos.Z, vector3.X, vector3.Y, vector3.Z, (int) byte.MaxValue, (int) byte.MaxValue, (int) byte.MaxValue, vector3.Length(), 10f, 10f, 100f, 1f, 1f);
       Function.Call(Hash.HIDE_HUD_AND_RADAR_THIS_FRAME);
       if (DateTime.Now.Subtract(this._lastUpdate).TotalMilliseconds > 5000.0)
       {
@@ -133,7 +133,7 @@ namespace HeistProject.GUI
     {
       if (Game.IsControlJustPressed(0, Control.FrontendPauseAlternate))
       {
-        Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "Highlight_Cancel", (InputArgument) "DLC_HEIST_PLANNING_BOARD_SOUNDS", (InputArgument) 1);
+        Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "Highlight_Cancel", "DLC_HEIST_PLANNING_BOARD_SOUNDS", 1);
         this._board.Delete();
         World.RenderingCamera = (Camera) null;
         this.Visible = false;
@@ -155,7 +155,7 @@ namespace HeistProject.GUI
         this._index = (1000 - 1000 % this.Setups.Count + this._index + 1) % this.Setups.Count;
         this.Setups[this._index].Highlighted = true;
         HeistBoard.HighlightItem(this._index);
-        Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "Highlight_Move", (InputArgument) "DLC_HEIST_PLANNING_BOARD_SOUNDS", (InputArgument) 1);
+        Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "Highlight_Move", "DLC_HEIST_PLANNING_BOARD_SOUNDS", 1);
       }
       if (Game.IsControlJustPressed(0, Control.PhoneUp))
       {
@@ -163,17 +163,17 @@ namespace HeistProject.GUI
         this._index = (1000 - 1000 % this.Setups.Count + this._index - 1) % this.Setups.Count;
         this.Setups[this._index].Highlighted = true;
         HeistBoard.HighlightItem(this._index);
-        Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "Highlight_Move", (InputArgument) "DLC_HEIST_PLANNING_BOARD_SOUNDS", (InputArgument) 1);
+        Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "Highlight_Move", "DLC_HEIST_PLANNING_BOARD_SOUNDS", 1);
       }
       if (!Game.IsControlJustPressed(0, Control.PhoneSelect))
         return;
       if (!this.Setups[this._index].Available || this.Setups[this._index].Complete)
       {
-        Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "Highlight_Error", (InputArgument) "DLC_HEIST_PLANNING_BOARD_SOUNDS", (InputArgument) 1);
+        Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "Highlight_Error", "DLC_HEIST_PLANNING_BOARD_SOUNDS", 1);
       }
       else
       {
-        Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "Highlight_Accept", (InputArgument) "DLC_HEIST_PLANNING_BOARD_SOUNDS", (InputArgument) 1);
+        Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "Highlight_Accept", "DLC_HEIST_PLANNING_BOARD_SOUNDS", 1);
         this.Setups[this._index].OnActivated();
       }
     }

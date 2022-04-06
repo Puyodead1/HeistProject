@@ -140,9 +140,9 @@ namespace InstaScript
       this._counterLady.CanRagdoll = false;
       this._linePed.CanRagdoll = false;
       this._sittingPed.CanRagdoll = false;
-      Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) this._sittingPed.Handle, (InputArgument) this.LoadDict("switch@michael@sitting"), (InputArgument) "idle", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 1, (InputArgument) -8f, (InputArgument) false, (InputArgument) false, (InputArgument) false);
-      Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) this._counterLady.Handle, (InputArgument) this.LoadDict("anim@heists@fleeca_bank@scope_out@cashier_loop"), (InputArgument) "cashier_loop", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 1, (InputArgument) -8f, (InputArgument) false, (InputArgument) false, (InputArgument) false);
-      Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) this._linePed.Handle, (InputArgument) this.LoadDict("anim@heists@fleeca_bank@hostages@ped_e@intro"), (InputArgument) "intro_loop", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 1, (InputArgument) -8f, (InputArgument) false, (InputArgument) false, (InputArgument) false);
+      Function.Call(Hash.TASK_PLAY_ANIM, this._sittingPed.Handle, this.LoadDict("switch@michael@sitting"), "idle", 8f, 1f, -1, 1, -8f, false, false, false);
+      Function.Call(Hash.TASK_PLAY_ANIM, this._counterLady.Handle, this.LoadDict("anim@heists@fleeca_bank@scope_out@cashier_loop"), "cashier_loop", 8f, 1f, -1, 1, -8f, false, false, false);
+      Function.Call(Hash.TASK_PLAY_ANIM, this._linePed.Handle, this.LoadDict("anim@heists@fleeca_bank@hostages@ped_e@intro"), "intro_loop", 8f, 1f, -1, 1, -8f, false, false, false);
       for (int index = 0; index < source.Length; ++index)
         source[index].MarkAsNoLongerNeeded();
       ScriptHandler.Log("Fleeca finale started.");
@@ -152,7 +152,7 @@ namespace InstaScript
     {
       if ((Entity) this._vehTarget != (Entity) null)
         this._vehTarget.Delete();
-      if (Blip.op_Inequality(this._destBlip, (Blip) null))
+      if (this._destBlip != null)
         this._destBlip.Remove();
       if ((Entity) this._doors != (Entity) null)
         this._doors.Delete();
@@ -179,20 +179,20 @@ namespace InstaScript
       UI.ShowSubtitle(" ");
       Game.Player.Character.FreezePosition = false;
       World.RenderingCamera = (Camera) null;
-      Function.Call(Hash.RELEASE_NAMED_SCRIPT_AUDIO_BANK, (InputArgument) "ALARMS_SOUNDSET");
-      Function.Call(Hash.RELEASE_NAMED_SCRIPT_AUDIO_BANK, (InputArgument) "HEIST_FLEECA_DRILL");
-      Function.Call(Hash.RELEASE_NAMED_SCRIPT_AUDIO_BANK, (InputArgument) "HEIST_FLEECA_DRILL_2");
-      Function.Call(Hash.RELEASE_NAMED_SCRIPT_AUDIO_BANK, (InputArgument) "DLC_HEIST_FLEECA_SOUNDSET");
+      Function.Call(Hash.RELEASE_NAMED_SCRIPT_AUDIO_BANK, "ALARMS_SOUNDSET");
+      Function.Call(Hash.RELEASE_NAMED_SCRIPT_AUDIO_BANK, "HEIST_FLEECA_DRILL");
+      Function.Call(Hash.RELEASE_NAMED_SCRIPT_AUDIO_BANK, "HEIST_FLEECA_DRILL_2");
+      Function.Call(Hash.RELEASE_NAMED_SCRIPT_AUDIO_BANK, "DLC_HEIST_FLEECA_SOUNDSET");
       TimerBarPool.Remove((TimerBarBase) this._mainBar);
       if (this.soundid != 0)
       {
-        Function.Call(Hash.STOP_SOUND, (InputArgument) this.soundid);
-        Function.Call(Hash.RELEASE_SOUND_ID, (InputArgument) this.soundid);
+        Function.Call(Hash.STOP_SOUND, this.soundid);
+        Function.Call(Hash.RELEASE_SOUND_ID, this.soundid);
       }
       if (this._alarmSoundId == 0)
         return;
-      Function.Call(Hash.STOP_SOUND, (InputArgument) this._alarmSoundId);
-      Function.Call(Hash.RELEASE_SOUND_ID, (InputArgument) this._alarmSoundId);
+      Function.Call(Hash.STOP_SOUND, this._alarmSoundId);
+      Function.Call(Hash.RELEASE_SOUND_ID, this._alarmSoundId);
     }
 
     public override void Update()
@@ -226,13 +226,13 @@ namespace InstaScript
       {
         UI.ShowSubtitle("");
         TaskSequence sequence = new TaskSequence();
-        Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) 0, (InputArgument) this.LoadDict("anim@heists@fleeca_bank@hostages@intro"), (InputArgument) "intro_ped_d", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 0, (InputArgument) -8f, (InputArgument) false, (InputArgument) false, (InputArgument) false);
-        Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) 0, (InputArgument) this.LoadDict("anim@heists@fleeca_bank@hostages@ped_d@"), (InputArgument) "idle", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 1, (InputArgument) -8f, (InputArgument) false, (InputArgument) false, (InputArgument) false);
+        Function.Call(Hash.TASK_PLAY_ANIM, 0, this.LoadDict("anim@heists@fleeca_bank@hostages@intro"), "intro_ped_d", 8f, 1f, -1, 0, -8f, false, false, false);
+        Function.Call(Hash.TASK_PLAY_ANIM, 0, this.LoadDict("anim@heists@fleeca_bank@hostages@ped_d@"), "idle", 8f, 1f, -1, 1, -8f, false, false, false);
         sequence.Close();
         this._counterLady.Task.PerformSequence(sequence);
         sequence.Dispose();
-        Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) this._sittingPed.Handle, (InputArgument) this.LoadDict("anim@heists@fleeca_bank@hostages@ped_a@intro"), (InputArgument) "intro", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 2, (InputArgument) -8f, (InputArgument) false, (InputArgument) false, (InputArgument) false);
-        Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) this._linePed.Handle, (InputArgument) this.LoadDict("anim@heists@fleeca_bank@hostages@intro"), (InputArgument) "intro_ped_e", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 2, (InputArgument) -8f, (InputArgument) false, (InputArgument) false, (InputArgument) false);
+        Function.Call(Hash.TASK_PLAY_ANIM, this._sittingPed.Handle, this.LoadDict("anim@heists@fleeca_bank@hostages@ped_a@intro"), "intro", 8f, 1f, -1, 2, -8f, false, false, false);
+        Function.Call(Hash.TASK_PLAY_ANIM, this._linePed.Handle, this.LoadDict("anim@heists@fleeca_bank@hostages@intro"), "intro_ped_e", 8f, 1f, -1, 2, -8f, false, false, false);
         string[] strArray = new string[4]
         {
           "GENERIC_FRIGHTENED_HIGH",
@@ -240,9 +240,9 @@ namespace InstaScript
           "GENERIC_SHOCKED_HIGH",
           "GENERIC_SHOCKED_MED"
         };
-        Function.Call(Hash._PLAY_AMBIENT_SPEECH1, (InputArgument) this._counterLady.Handle, (InputArgument) strArray[Util.SharedRandom.Next(strArray.Length)], (InputArgument) "SPEECH_PARAMS_FORCE_SHOUTED_CRITICAL", (InputArgument) 1);
-        Function.Call(Hash._PLAY_AMBIENT_SPEECH1, (InputArgument) this._sittingPed.Handle, (InputArgument) strArray[Util.SharedRandom.Next(strArray.Length)], (InputArgument) "SPEECH_PARAMS_FORCE_SHOUTED_CRITICAL", (InputArgument) 1);
-        Function.Call(Hash._PLAY_AMBIENT_SPEECH1, (InputArgument) this._linePed.Handle, (InputArgument) strArray[Util.SharedRandom.Next(strArray.Length)], (InputArgument) "SPEECH_PARAMS_FORCE_SHOUTED_CRITICAL", (InputArgument) 1);
+        Function.Call(Hash._PLAY_AMBIENT_SPEECH1, this._counterLady.Handle, strArray[Util.SharedRandom.Next(strArray.Length)], "SPEECH_PARAMS_FORCE_SHOUTED_CRITICAL", 1);
+        Function.Call(Hash._PLAY_AMBIENT_SPEECH1, this._sittingPed.Handle, strArray[Util.SharedRandom.Next(strArray.Length)], "SPEECH_PARAMS_FORCE_SHOUTED_CRITICAL", 1);
+        Function.Call(Hash._PLAY_AMBIENT_SPEECH1, this._linePed.Handle, strArray[Util.SharedRandom.Next(strArray.Length)], "SPEECH_PARAMS_FORCE_SHOUTED_CRITICAL", 1);
         ++this.Stage;
       }
       if (this.Stage == 5 && Geometry.RaycastEntity(new Vector2(0.0f, 0.0f), GameplayCamera.Position, GameplayCamera.Rotation) == (Entity) this._counterLady && Game.Player.Character.IsShooting)
@@ -254,8 +254,8 @@ namespace InstaScript
           "GENERIC_SHOCKED_HIGH",
           "GENERIC_SHOCKED_MED"
         };
-        Function.Call(Hash._PLAY_AMBIENT_SPEECH1, (InputArgument) this._counterLady.Handle, (InputArgument) strArray[Util.SharedRandom.Next(strArray.Length)], (InputArgument) "SPEECH_PARAMS_FORCE_SHOUTED_CRITICAL", (InputArgument) 1);
-        Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) this._counterLady.Handle, (InputArgument) this.LoadDict("anim@heists@fleeca_bank@hostages@ped_d@door"), (InputArgument) "open", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 2, (InputArgument) -8f, (InputArgument) false, (InputArgument) false, (InputArgument) false);
+        Function.Call(Hash._PLAY_AMBIENT_SPEECH1, this._counterLady.Handle, strArray[Util.SharedRandom.Next(strArray.Length)], "SPEECH_PARAMS_FORCE_SHOUTED_CRITICAL", 1);
+        Function.Call(Hash.TASK_PLAY_ANIM, this._counterLady.Handle, this.LoadDict("anim@heists@fleeca_bank@hostages@ped_d@door"), "open", 8f, 1f, -1, 2, -8f, false, false, false);
         this._openDoorStart = Game.GameTime;
         ++this.Stage;
       }
@@ -263,7 +263,7 @@ namespace InstaScript
         Game.MaxWantedLevel = 0;
       if (this.Stage >= 4 && (Entity) this._doors == (Entity) null)
       {
-        int handle = Function.Call<int>(Hash.GET_CLOSEST_OBJECT_OF_TYPE, (InputArgument) 1175.542f, (InputArgument) 2710.861f, (InputArgument) 38.22689f, (InputArgument) 1f, (InputArgument) 2121050683, (InputArgument) 0);
+        int handle = Function.Call<int>(Hash.GET_CLOSEST_OBJECT_OF_TYPE, 1175.542f, 2710.861f, 38.22689f, 1f, 2121050683, 0);
         if (handle != 0)
         {
           new Prop(handle).Delete();
@@ -293,7 +293,7 @@ namespace InstaScript
         this._drill.FreezePosition = true;
         this._drill.HasCollision = false;
         this._drill.IsInvincible = true;
-        Function.Call(Hash.ATTACH_ENTITY_TO_ENTITY, (InputArgument) this._drill, (InputArgument) Game.Player.Character, (InputArgument) Game.Player.Character.GetBoneIndex(Bone.PH_R_Hand), (InputArgument) 0.0f, (InputArgument) 0.0f, (InputArgument) 0.0f, (InputArgument) 0.0f, (InputArgument) 0.0f, (InputArgument) 0.0f, (InputArgument) 0, (InputArgument) 0, (InputArgument) 0, (InputArgument) 0, (InputArgument) 2, (InputArgument) 1);
+        Function.Call(Hash.ATTACH_ENTITY_TO_ENTITY, this._drill, Game.Player.Character, Game.Player.Character.GetBoneIndex(Bone.PH_R_Hand), 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0, 2, 1);
         model1.MarkAsNoLongerNeeded();
         Model model2 = new Model("hei_p_m_bag_var22_arm_s");
         model2.Request(10000);
@@ -301,23 +301,23 @@ namespace InstaScript
         this._bag.FreezePosition = true;
         this._bag.HasCollision = false;
         this._bag.IsInvincible = true;
-        Function.Call(Hash.ATTACH_ENTITY_TO_ENTITY, (InputArgument) this._bag.Handle, (InputArgument) Game.Player.Character, (InputArgument) Game.Player.Character.GetBoneIndex(Bone.PH_L_Hand), (InputArgument) 0.0, (InputArgument) 0.0, (InputArgument) 0.0, (InputArgument) 0.0, (InputArgument) 0.0, (InputArgument) 0.0, (InputArgument) 0, (InputArgument) 0, (InputArgument) 0, (InputArgument) 0, (InputArgument) 2, (InputArgument) 1);
-        Function.Call(Hash.PLAY_ENTITY_ANIM, (InputArgument) this._bag, (InputArgument) "bag_intro", (InputArgument) "anim@heists@fleeca_bank@drilling", (InputArgument) 1000.0, (InputArgument) 1, (InputArgument) 1, (InputArgument) 1, (InputArgument) 0, (InputArgument) 0);
+        Function.Call(Hash.ATTACH_ENTITY_TO_ENTITY, this._bag.Handle, Game.Player.Character, Game.Player.Character.GetBoneIndex(Bone.PH_L_Hand), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 2, 1);
+        Function.Call(Hash.PLAY_ENTITY_ANIM, this._bag, "bag_intro", "anim@heists@fleeca_bank@drilling", 1000.0, 1, 1, 1, 0, 0);
         this._drillCam = World.CreateCamera(Game.Player.Character.GetOffsetInWorldCoords(new Vector3(0.9193f, -0.5807f, 0.0869f)), new Vector3(), 60f);
         this._drillCam.PointAt(Game.Player.Character.GetOffsetInWorldCoords(new Vector3(0.1376f, 0.4819f, 0.4162f)));
         this._drillCam.Shake(CameraShake.Hand, 0.1f);
         World.RenderingCamera = this._drillCam;
         model2.MarkAsNoLongerNeeded();
         TaskSequence sequence = new TaskSequence();
-        Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) 0, (InputArgument) this.LoadDict("anim@heists@fleeca_bank@drilling"), (InputArgument) "intro", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 0, (InputArgument) -8f, (InputArgument) false, (InputArgument) false, (InputArgument) false);
-        Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) 0, (InputArgument) this.LoadDict("anim@heists@fleeca_bank@drilling"), (InputArgument) "drill_right_end", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 1, (InputArgument) -8f, (InputArgument) false, (InputArgument) false, (InputArgument) false);
+        Function.Call(Hash.TASK_PLAY_ANIM, 0, this.LoadDict("anim@heists@fleeca_bank@drilling"), "intro", 8f, 1f, -1, 0, -8f, false, false, false);
+        Function.Call(Hash.TASK_PLAY_ANIM, 0, this.LoadDict("anim@heists@fleeca_bank@drilling"), "drill_right_end", 8f, 1f, -1, 1, -8f, false, false, false);
         sequence.Close();
         Game.Player.Character.Task.PerformSequence(sequence);
         DrillingMinigame.StartNew();
         DrillingMinigame.Visible = true;
-        Function.Call(Hash.STOP_ENTITY_ANIM, (InputArgument) "bag_intro", (InputArgument) "anim@heists@fleeca_bank@drilling");
+        Function.Call(Hash.STOP_ENTITY_ANIM, "bag_intro", "anim@heists@fleeca_bank@drilling");
         Script.Yield();
-        Function.Call(Hash.PLAY_ENTITY_ANIM, (InputArgument) this._bag, (InputArgument) "bag_drill_straight_idle", (InputArgument) "anim@heists@fleeca_bank@drilling", (InputArgument) 1000.0, (InputArgument) 1, (InputArgument) 1, (InputArgument) 1, (InputArgument) 0, (InputArgument) 0);
+        Function.Call(Hash.PLAY_ENTITY_ANIM, this._bag, "bag_drill_straight_idle", "anim@heists@fleeca_bank@drilling", 1000.0, 1, 1, 1, 0, 0);
         Script.Wait(7000);
         DrillingMinigame.OnDrillingComplete = (Action) (() =>
         {
@@ -328,12 +328,12 @@ namespace InstaScript
           EntryPoint.Team[1].BlockPermanentEvents = false;
           EntryPoint.Team[1].Position = this._crowdControlPos;
           this.Stage = 9;
-          Function.Call(Hash.STOP_SOUND, (InputArgument) this.soundid);
+          Function.Call(Hash.STOP_SOUND, this.soundid);
           DrillingMinigame.StartNew();
           World.RenderingCamera = (Camera) null;
           DrillingMinigame.Visible = false;
           Game.Player.Character.Task.ClearAll();
-          Function.Call(Hash.TASK_PLAY_ANIM, (InputArgument) Game.Player.Character.Handle, (InputArgument) this.LoadDict("anim@heists@fleeca_bank@drilling"), (InputArgument) "outro", (InputArgument) 8f, (InputArgument) 1f, (InputArgument) -1, (InputArgument) 0, (InputArgument) -8f, (InputArgument) false, (InputArgument) false, (InputArgument) false);
+          Function.Call(Hash.TASK_PLAY_ANIM, Game.Player.Character.Handle, this.LoadDict("anim@heists@fleeca_bank@drilling"), "outro", 8f, 1f, -1, 0, -8f, false, false, false);
           Script.Wait(5000);
           Game.Player.Character.FreezePosition = false;
           if ((Entity) this._drill != (Entity) null)
@@ -348,26 +348,26 @@ namespace InstaScript
       }
       if (this.Stage == 8)
       {
-        Function.Call(Hash.REQUEST_ADDITIONAL_TEXT, (InputArgument) "FMMC", (InputArgument) 1);
-        Function.Call(Hash.DISPLAY_HELP_TEXT_THIS_FRAME, (InputArgument) "MC_DRILL_1", (InputArgument) 1);
+        Function.Call(Hash.REQUEST_ADDITIONAL_TEXT, "FMMC", 1);
+        Function.Call(Hash.DISPLAY_HELP_TEXT_THIS_FRAME, "MC_DRILL_1", 1);
         if (this.soundid == 0)
           this.soundid = Function.Call<int>(Hash.GET_SOUND_ID);
-        Function.Call(Hash.REQUEST_SCRIPT_AUDIO_BANK, (InputArgument) "DLC_MPHEIST\\HEIST_FLEECA_DRILL", (InputArgument) 1);
-        Function.Call(Hash.REQUEST_SCRIPT_AUDIO_BANK, (InputArgument) "DLC_MPHEIST\\HEIST_FLEECA_DRILL_2", (InputArgument) 1);
-        Function.Call(Hash.REQUEST_SCRIPT_AUDIO_BANK, (InputArgument) "HEIST_FLEECA_DRILL", (InputArgument) 1);
-        Function.Call(Hash.REQUEST_SCRIPT_AUDIO_BANK, (InputArgument) "HEIST_FLEECA_DRILL_2", (InputArgument) 1);
-        Function.Call(Hash.REQUEST_SCRIPT_AUDIO_BANK, (InputArgument) "DLC_HEIST_FLEECA_SOUNDSET", (InputArgument) 1);
-        if (Function.Call<bool>(Hash.HAS_SOUND_FINISHED, (InputArgument) this.soundid) || !this._firstSound)
+        Function.Call(Hash.REQUEST_SCRIPT_AUDIO_BANK, "DLC_MPHEIST\\HEIST_FLEECA_DRILL", 1);
+        Function.Call(Hash.REQUEST_SCRIPT_AUDIO_BANK, "DLC_MPHEIST\\HEIST_FLEECA_DRILL_2", 1);
+        Function.Call(Hash.REQUEST_SCRIPT_AUDIO_BANK, "HEIST_FLEECA_DRILL", 1);
+        Function.Call(Hash.REQUEST_SCRIPT_AUDIO_BANK, "HEIST_FLEECA_DRILL_2", 1);
+        Function.Call(Hash.REQUEST_SCRIPT_AUDIO_BANK, "DLC_HEIST_FLEECA_SOUNDSET", 1);
+        if (Function.Call<bool>(Hash.HAS_SOUND_FINISHED, this.soundid) || !this._firstSound)
         {
-          Function.Call(Hash.PLAY_SOUND_FROM_ENTITY, (InputArgument) this.soundid, (InputArgument) "Drill", (InputArgument) this._drill, (InputArgument) "DLC_HEIST_FLEECA_SOUNDSET", (InputArgument) 1, (InputArgument) 0);
+          Function.Call(Hash.PLAY_SOUND_FROM_ENTITY, this.soundid, "Drill", this._drill, "DLC_HEIST_FLEECA_SOUNDSET", 1, 0);
           this._firstSound = true;
         }
         if ((double) DrillingMinigame.f7 < (double) DrillingMinigame.fD)
-          Function.Call(Hash.SET_VARIABLE_ON_SOUND, (InputArgument) this.soundid, (InputArgument) "DrillState", (InputArgument) 0.0);
+          Function.Call(Hash.SET_VARIABLE_ON_SOUND, this.soundid, "DrillState", 0.0);
         else if ((double) DrillingMinigame.f7 <= (double) DrillingMinigame.fD)
-          Function.Call(Hash.SET_VARIABLE_ON_SOUND, (InputArgument) this.soundid, (InputArgument) "DrillState", (InputArgument) 0.5);
+          Function.Call(Hash.SET_VARIABLE_ON_SOUND, this.soundid, "DrillState", 0.5);
         else
-          Function.Call(Hash.SET_VARIABLE_ON_SOUND, (InputArgument) this.soundid, (InputArgument) "DrillState", (InputArgument) 1.0);
+          Function.Call(Hash.SET_VARIABLE_ON_SOUND, this.soundid, "DrillState", 1.0);
       }
       if (this.Stage >= 7 && Game.GameTime - this._openDoorStart > 90000)
       {
@@ -375,14 +375,14 @@ namespace InstaScript
           this._alarmSoundId = Function.Call<int>(Hash.GET_SOUND_ID);
         for (int index = 0; index < 200; ++index)
         {
-          if (!Function.Call<bool>(Hash.REQUEST_SCRIPT_AUDIO_BANK, (InputArgument) "ALARM_BELL_01", (InputArgument) 0))
+          if (!Function.Call<bool>(Hash.REQUEST_SCRIPT_AUDIO_BANK, "ALARM_BELL_01", 0))
             Script.Yield();
           else
             break;
         }
-        if (Function.Call<bool>(Hash.HAS_SOUND_FINISHED, (InputArgument) this._alarmSoundId) || !this._alarmFirstSound)
+        if (Function.Call<bool>(Hash.HAS_SOUND_FINISHED, this._alarmSoundId) || !this._alarmFirstSound)
         {
-          Function.Call(Hash.PLAY_SOUND_FROM_COORD, (InputArgument) this._alarmSoundId, (InputArgument) "Bell_01", (InputArgument) this._crowdControlPos.X, (InputArgument) this._crowdControlPos.Y, (InputArgument) this._crowdControlPos.Z, (InputArgument) "ALARMS_SOUNDSET", (InputArgument) 0, (InputArgument) 0, (InputArgument) 0);
+          Function.Call(Hash.PLAY_SOUND_FROM_COORD, this._alarmSoundId, "Bell_01", this._crowdControlPos.X, this._crowdControlPos.Y, this._crowdControlPos.Z, "ALARMS_SOUNDSET", 0, 0, 0);
           this._alarmFirstSound = true;
         }
         EntryPoint.Team[1].BlockPermanentEvents = false;
@@ -420,7 +420,7 @@ namespace InstaScript
       {
         ++this.Stage;
         UI.ShowSubtitle("");
-        Function.Call(Hash.TASK_HELI_MISSION, (InputArgument) this._pilot.Handle, (InputArgument) this._escapeChopper.Handle, (InputArgument) 0, (InputArgument) 0, (InputArgument) 0.0f, (InputArgument) 0.0f, (InputArgument) 80f, (InputArgument) 6, (InputArgument) 40f, (InputArgument) 1f, (InputArgument) 36f, (InputArgument) 15, (InputArgument) 15, (InputArgument) -1f, (InputArgument) 1);
+        Function.Call(Hash.TASK_HELI_MISSION, this._pilot.Handle, this._escapeChopper.Handle, 0, 0, 0.0f, 0.0f, 80f, 6, 40f, 1f, 36f, 15, 15, -1f, 1);
         this._drillingCompleteTime = Game.GameTime;
       }
       if (this.Stage != 11 || Game.GameTime - this._drillingCompleteTime <= 30000 || this.HasFinished)
@@ -451,7 +451,7 @@ namespace InstaScript
       }
       if (this.Stage == 8)
       {
-        if (Game.CurrentInputMode == 1)
+        if (Game.CurrentInputMode == InputMode.GamePad)
           Util.DisplayHelpTextThisFrame("Use ~INPUT_MOVE_DOWN_ONLY~ to push the drill towards the bite point. Don't push too hard.");
         else
           Util.DisplayHelpTextThisFrame("Use ~INPUT_MOVE_DOWN_ONLY~ to control the drill power. Use ~INPUT_LOOK_DOWN_ONLY~ push the drill.");
@@ -491,8 +491,8 @@ namespace InstaScript
       }
       if ((this.Stage == 2 || this.Stage == 3) && (Entity) this._counterLady != (Entity) null && (Entity) this._linePed != (Entity) null && (Entity) this._sittingPed != (Entity) null)
       {
-        Function.Call(Hash.SET_PED_DENSITY_MULTIPLIER_THIS_FRAME, (InputArgument) 0.0f);
-        Function.Call(Hash.SET_SCENARIO_PED_DENSITY_MULTIPLIER_THIS_FRAME, (InputArgument) 0.0f, (InputArgument) 0.0f);
+        Function.Call(Hash.SET_PED_DENSITY_MULTIPLIER_THIS_FRAME, 0.0f);
+        Function.Call(Hash.SET_SCENARIO_PED_DENSITY_MULTIPLIER_THIS_FRAME, 0.0f, 0.0f);
         Ped[] allPeds = World.GetAllPeds();
         List<int> intList = new List<int>();
         intList.Add(EntryPoint.Team[0].Handle);
@@ -586,7 +586,7 @@ namespace InstaScript
           "GENERIC_SHOCKED_MED"
         };
         if (target != (Entity) null)
-          Function.Call(Hash._PLAY_AMBIENT_SPEECH1, (InputArgument) target.Handle, (InputArgument) strArray[Util.SharedRandom.Next(strArray.Length)], (InputArgument) "SPEECH_PARAMS_FORCE_SHOUTED_CRITICAL", (InputArgument) 1);
+          Function.Call(Hash._PLAY_AMBIENT_SPEECH1, target.Handle, strArray[Util.SharedRandom.Next(strArray.Length)], "SPEECH_PARAMS_FORCE_SHOUTED_CRITICAL", 1);
         this._lastAim = Game.GameTime;
       }
       if (this.Stage != 2 || !((Entity) this._vehTarget != (Entity) null))
@@ -595,7 +595,7 @@ namespace InstaScript
       if (this._oldIsInVeh && !flag)
       {
         UI.ShowSubtitle("Get back in the ~b~Kuruma", 120000);
-        if (Blip.op_Inequality(this._destBlip, (Blip) null) && this._destBlip.Exists())
+        if (this._destBlip != null && this._destBlip.Exists())
         {
           this._destBlip.ShowRoute = false;
           this._destBlip.Alpha = 0;
@@ -619,9 +619,9 @@ namespace InstaScript
     {
       while (true)
       {
-        if (!Function.Call<bool>(Hash.HAS_ANIM_DICT_LOADED, (InputArgument) dict))
+        if (!Function.Call<bool>(Hash.HAS_ANIM_DICT_LOADED, dict))
         {
-          Function.Call(Hash.REQUEST_ANIM_DICT, (InputArgument) dict);
+          Function.Call(Hash.REQUEST_ANIM_DICT, dict);
           Script.Yield();
         }
         else

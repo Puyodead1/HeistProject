@@ -4,12 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{06427CAA-2756-4E70-AB57-C5054AA9D5F0}</ProjectGuid>
+    <ProjectGuid>{6667F048-E5B4-405E-AF8B-FD6D56B8F933}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AssemblyName>HeistProject</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>10.0</LangVersion>
     <ApplicationVersion>0.4.32.678</ApplicationVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,13 +32,29 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="NativeUI">
-      <HintPath>lib\NativeUI.dll</HintPath>
+    <Reference Include="Ionic.Zip">
+      <HintPath>D:\Steam\steamapps\common\Grand Theft Auto V\Scripts\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="ScriptHookVDotNet">
-      <HintPath>lib\ScriptHookVDotNet.dll</HintPath>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NativeUI, Version=1.9.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HeistProject\lib\NativeUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>D:\Steam\steamapps\common\Grand Theft Auto V\Scripts\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ScriptHookVDotNet2, Version=2.10.10.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HeistProject\lib\ScriptHookVDotNet2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,6 +63,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExternalScript\SetupHeistLogic.cs" />
+    <Compile Include="ExternalScript\HeatHeistLogic.cs" />
+    <Compile Include="InstaScript\PacificFinale.cs" />
+    <Compile Include="InstaScript\PosInfo.cs" />
+    <Compile Include="InstaScript\Hostage.cs" />
+    <Compile Include="InstaScript\FinaleLogic.cs" />
+    <Compile Include="InstaScript\KurumaLogic.cs" />
+    <Compile Include="InstaScript\ScopeOutLogic.cs" />
+    <Compile Include="InstaScript\ConvoySetupLogic.cs" />
+    <Compile Include="InstaScript\TitanSetupLogic.cs" />
+    <Compile Include="InstaScript\HackSetupLogic.cs" />
+    <Compile Include="InstaScript\VansSetupLogic.cs" />
+    <Compile Include="SeriesA\Finale.cs" />
+    <Compile Include="SeriesA\PosInfo.cs" />
+    <Compile Include="SeriesA\Rats.cs" />
     <Compile Include="HeistProject\BackgroundThread.cs" />
     <Compile Include="HeistProject\CharacterEvent.cs" />
     <Compile Include="HeistProject\CharacterCreator.cs" />
@@ -94,21 +127,6 @@
     <Compile Include="HeistProject\GUI\MainMenu\TabItem.cs" />
     <Compile Include="HeistProject\GUI\MainMenu\TabTextItem.cs" />
     <Compile Include="HeistProject\GUI\MainMenu\TabView.cs" />
-    <Compile Include="SeriesA\Finale.cs" />
-    <Compile Include="SeriesA\PosInfo.cs" />
-    <Compile Include="SeriesA\Rats.cs" />
-    <Compile Include="InstaScript\PacificFinale.cs" />
-    <Compile Include="InstaScript\PosInfo.cs" />
-    <Compile Include="InstaScript\Hostage.cs" />
-    <Compile Include="InstaScript\FinaleLogic.cs" />
-    <Compile Include="InstaScript\KurumaLogic.cs" />
-    <Compile Include="InstaScript\ScopeOutLogic.cs" />
-    <Compile Include="InstaScript\ConvoySetupLogic.cs" />
-    <Compile Include="InstaScript\TitanSetupLogic.cs" />
-    <Compile Include="InstaScript\HackSetupLogic.cs" />
-    <Compile Include="InstaScript\VansSetupLogic.cs" />
-    <Compile Include="ExternalScript\SetupHeistLogic.cs" />
-    <Compile Include="ExternalScript\HeatHeistLogic.cs" />
     <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -51,7 +51,7 @@ namespace HeistProject.GUI.MainMenu
       {
         if (Game.IsControlJustPressed(0, Control.PhoneSelect))
         {
-          Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "SELECT", (InputArgument) "HUD_FRONTEND_DEFAULT_SOUNDSET", (InputArgument) 1);
+          Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
           HeistProject.GUI.MainMenu.OnItemSelect onItemSelect = this.OnItemSelect;
           if (onItemSelect != null)
             onItemSelect(this.Heists[this.Index]);
@@ -59,7 +59,7 @@ namespace HeistProject.GUI.MainMenu
         if (Game.IsControlJustPressed(0, Control.FrontendUp) || Game.IsControlJustPressed(0, Control.MoveUpOnly))
         {
           this.Index = (1000 - 1000 % this.Heists.Count + this.Index - 1) % this.Heists.Count;
-          Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "NAV_UP_DOWN", (InputArgument) "HUD_FRONTEND_DEFAULT_SOUNDSET", (InputArgument) 1);
+          Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
           if (this.Heists.Count <= 15)
             return;
           if (this.Index < this._minItem)
@@ -77,7 +77,7 @@ namespace HeistProject.GUI.MainMenu
           if (!Game.IsControlJustPressed(0, Control.FrontendDown) && !Game.IsControlJustPressed(0, Control.MoveDownOnly))
             return;
           this.Index = (1000 - 1000 % this.Heists.Count + this.Index + 1) % this.Heists.Count;
-          Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "NAV_UP_DOWN", (InputArgument) "HUD_FRONTEND_DEFAULT_SOUNDSET", (InputArgument) 1);
+          Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
           if (this.Heists.Count <= 15)
             return;
           if (this.Index >= this._maxItem)

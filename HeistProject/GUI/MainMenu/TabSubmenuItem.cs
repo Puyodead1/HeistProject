@@ -41,20 +41,20 @@ namespace HeistProject.GUI.MainMenu
           return;
         if (Game.IsControlJustPressed(0, Control.PhoneSelect) && this.Focused)
         {
-          Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "SELECT", (InputArgument) "HUD_FRONTEND_DEFAULT_SOUNDSET", (InputArgument) 1);
+          Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
           this.Items[this.Index].OnActivated();
         }
         if (Game.IsControlJustPressed(0, Control.FrontendUp) || Game.IsControlJustPressed(0, Control.MoveUpOnly))
         {
           this.Index = (1000 - 1000 % this.Items.Count + this.Index - 1) % this.Items.Count;
-          Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "NAV_UP_DOWN", (InputArgument) "HUD_FRONTEND_DEFAULT_SOUNDSET", (InputArgument) 1);
+          Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
         }
         else
         {
           if (!Game.IsControlJustPressed(0, Control.FrontendDown) && !Game.IsControlJustPressed(0, Control.MoveDownOnly))
             return;
           this.Index = (1000 - 1000 % this.Items.Count + this.Index + 1) % this.Items.Count;
-          Function.Call(Hash.PLAY_SOUND_FRONTEND, (InputArgument) -1, (InputArgument) "NAV_UP_DOWN", (InputArgument) "HUD_FRONTEND_DEFAULT_SOUNDSET", (InputArgument) 1);
+          Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
         }
       }
     }

@@ -115,7 +115,7 @@ namespace HeistProject
       options.ReferencedAssemblies.Add("System.IO.dll");
       options.ReferencedAssemblies.Add("System.Linq.dll");
       options.ReferencedAssemblies.Add("System.Core.dll");
-      options.ReferencedAssemblies.Add("ScriptHookVDotNet.dll");
+      options.ReferencedAssemblies.Add("ScriptHookVDotNet2.dll");
       options.ReferencedAssemblies.Add("scripts\\HeistProject.dll");
       options.ReferencedAssemblies.Add("scripts\\NativeUI.dll");
       options.GenerateInMemory = true;

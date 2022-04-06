@@ -93,7 +93,7 @@ namespace InstaScript
     {
       if ((Entity) this._vehTarget != (Entity) null)
         this._vehTarget.Delete();
-      if (Blip.op_Inequality(this._destBlip, (Blip) null))
+      if (this._destBlip != null)
         this._destBlip.Remove();
       for (int index = 0; index < this._ambient.Length; ++index)
       {

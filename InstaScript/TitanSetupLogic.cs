@@ -75,7 +75,7 @@ namespace InstaScript
       this._cleanup.Add((Entity) (vehicle1 = World.CreateVehicle(source[2], new Vector3(-1269.239f, -3356.507f, 14.01297f), 40.73475f)));
       Vehicle vehicle2;
       this._cleanup.Add((Entity) (vehicle2 = World.CreateVehicle(source[3], new Vector3(-1263.535f, -3361.517f, 15.76355f), 72.23425f)));
-      Function.Call(Hash.ATTACH_VEHICLE_TO_TRAILER, (InputArgument) vehicle1, (InputArgument) vehicle2, (InputArgument) 5f);
+      Function.Call(Hash.ATTACH_VEHICLE_TO_TRAILER, vehicle1, vehicle2, 5f);
       this._cleanup.Add((Entity) World.CreatePed(source[4], new Vector3(-1251.501f, -3387.389f, 13.94017f), 26.15033f));
       this._cleanup.Add((Entity) World.CreatePed(source[4], new Vector3(-1252.367f, -3386.354f, 13.94385f), -117.3318f));
       this._cleanup.Add((Entity) World.CreatePed(source[4], new Vector3(-1284.409f, -3360.724f, 13.94355f), -77.4324f));
@@ -106,22 +106,22 @@ namespace InstaScript
         {
           Ped ped = (Ped) entity;
           ped.RelationshipGroup = num2;
-          Function.Call(Hash.SET_PED_COMBAT_MOVEMENT, (InputArgument) ped.Handle, (InputArgument) 1);
+          Function.Call(Hash.SET_PED_COMBAT_MOVEMENT, ped.Handle, 1);
           ped.BlockPermanentEvents = false;
-          Function.Call(Hash.SET_PED_HEARING_RANGE, (InputArgument) ped, (InputArgument) 100f);
-          Function.Call(Hash.SET_PED_SEEING_RANGE, (InputArgument) ped, (InputArgument) 100f);
-          Function.Call(Hash.SET_PED_COMBAT_RANGE, (InputArgument) ped, (InputArgument) 1);
+          Function.Call(Hash.SET_PED_HEARING_RANGE, ped, 100f);
+          Function.Call(Hash.SET_PED_SEEING_RANGE, ped, 100f);
+          Function.Call(Hash.SET_PED_COMBAT_RANGE, ped, 1);
           ped.AddBlip();
           ped.CurrentBlip.Sprite = BlipSprite.Enemy;
           ped.CurrentBlip.Color = BlipColor.Red;
           ped.CurrentBlip.Scale = 0.7f;
           ped.CurrentBlip.Alpha = 0;
-          Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) ped, (InputArgument) 324215364, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
-          Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) ped, (InputArgument) 453432689, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
-          Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) ped, (InputArgument) -1074790547, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
+          Function.Call(Hash.GIVE_WEAPON_TO_PED, ped, 324215364, 1000, true, true);
+          Function.Call(Hash.GIVE_WEAPON_TO_PED, ped, 453432689, 1000, true, true);
+          Function.Call(Hash.GIVE_WEAPON_TO_PED, ped, -1074790547, 1000, true, true);
           if (num3 >= 9)
-            Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) ped, (InputArgument) 100416529, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
-          Function.Call(Hash.TASK_START_SCENARIO_IN_PLACE, (InputArgument) ped, (InputArgument) strArray[Util.SharedRandom.Next(strArray.Length)], (InputArgument) 0, (InputArgument) false);
+            Function.Call(Hash.GIVE_WEAPON_TO_PED, ped, 100416529, 1000, true, true);
+          Function.Call(Hash.TASK_START_SCENARIO_IN_PLACE, ped, strArray[Util.SharedRandom.Next(strArray.Length)], 0, false);
           this._enemies.Add(ped);
           ++num3;
         }
@@ -135,7 +135,7 @@ namespace InstaScript
     {
       foreach (Entity entity in this._cleanup)
         entity.Delete();
-      if (Blip.op_Inequality(this._destBlip, (Blip) null))
+      if (this._destBlip != null)
         this._destBlip.Remove();
       UI.ShowSubtitle("");
     }
@@ -229,19 +229,19 @@ namespace InstaScript
       Ped ped2 = World.CreatePed(model2, position);
       int num = World.AddRelationshipGroup("PACIFIC_HACK_ENEMIES");
       ped1.RelationshipGroup = num;
-      Function.Call(Hash.SET_PED_COMBAT_MOVEMENT, (InputArgument) ped1.Handle, (InputArgument) 3);
+      Function.Call(Hash.SET_PED_COMBAT_MOVEMENT, ped1.Handle, 3);
       ped1.BlockPermanentEvents = false;
-      Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) ped1, (InputArgument) -2084633992, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
-      Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) ped1, (InputArgument) 324215364, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
+      Function.Call(Hash.GIVE_WEAPON_TO_PED, ped1, -2084633992, 1000, true, true);
+      Function.Call(Hash.GIVE_WEAPON_TO_PED, ped1, 324215364, 1000, true, true);
       ped2.RelationshipGroup = num;
-      Function.Call(Hash.SET_PED_COMBAT_MOVEMENT, (InputArgument) ped2.Handle, (InputArgument) 3);
+      Function.Call(Hash.SET_PED_COMBAT_MOVEMENT, ped2.Handle, 3);
       ped2.BlockPermanentEvents = false;
-      Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) ped2, (InputArgument) -2084633992, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
-      Function.Call(Hash.GIVE_WEAPON_TO_PED, (InputArgument) ped2, (InputArgument) 324215364, (InputArgument) 1000, (InputArgument) true, (InputArgument) true);
+      Function.Call(Hash.GIVE_WEAPON_TO_PED, ped2, -2084633992, 1000, true, true);
+      Function.Call(Hash.GIVE_WEAPON_TO_PED, ped2, 324215364, 1000, true, true);
       ped1.Task.WarpIntoVehicle(vehicle, VehicleSeat.Driver);
       ped2.Task.WarpIntoVehicle(vehicle, VehicleSeat.Passenger);
       Script.Wait(1000);
-      Function.Call(Hash.TASK_VEHICLE_CHASE, (InputArgument) ped1.Handle, (InputArgument) Game.Player.Character.Handle);
+      Function.Call(Hash.TASK_VEHICLE_CHASE, ped1.Handle, Game.Player.Character.Handle);
       ped1.AddBlip();
       ped1.CurrentBlip.Sprite = BlipSprite.Enemy;
       ped1.CurrentBlip.Color = BlipColor.Red;
