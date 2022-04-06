@@ -7,7 +7,8 @@ on:
     branches: [ main ]
 
 jobs:  
-  build:    
+  build:
+    if: "! contains(toJSON(github.event.commits.*.message), '[ci skip]')"
     runs-on: windows-latest
     steps:      
       - uses: actions/checkout@v3
