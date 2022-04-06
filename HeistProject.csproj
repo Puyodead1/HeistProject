@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\23562\Downloads\HeistProject.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{06427CAA-2756-4E70-AB57-C5054AA9D5F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>HeistProject</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <ApplicationVersion>0.4.32.678</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NativeUI">
+      <HintPath>lib\NativeUI.dll</HintPath>
+    </Reference>
+    <Reference Include="ScriptHookVDotNet">
+      <HintPath>lib\ScriptHookVDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HeistProject\BackgroundThread.cs" />
+    <Compile Include="HeistProject\CharacterEvent.cs" />
+    <Compile Include="HeistProject\CharacterCreator.cs" />
+    <Compile Include="HeistProject\CharacterData.cs" />
+    <Compile Include="HeistProject\HeadLayout.cs" />
+    <Compile Include="HeistProject\EntryPoint.cs" />
+    <Compile Include="HeistProject\Geometry.cs" />
+    <Compile Include="HeistProject\HeistDefinition.cs" />
+    <Compile Include="HeistProject\SetupDefinition.cs" />
+    <Compile Include="HeistProject\ScriptedLogic.cs" />
+    <Compile Include="HeistProject\Util.cs" />
+    <Compile Include="HeistProject\Objective.cs" />
+    <Compile Include="HeistProject\PositionTargetObjective.cs" />
+    <Compile Include="HeistProject\ParseableVersion.cs" />
+    <Compile Include="HeistProject\Savegame.cs" />
+    <Compile Include="HeistProject\ScriptHandler.cs" />
+    <Compile Include="HeistProject\TempFileHosting.cs" />
+    <Compile Include="HeistProject\Settings.cs" />
+    <Compile Include="HeistProject\Data\Outfits.cs" />
+    <Compile Include="HeistProject\Data\Outfit.cs" />
+    <Compile Include="HeistProject\Data\TexturedOutfit.cs" />
+    <Compile Include="HeistProject\Data\OutfitDictWrapper.cs" />
+    <Compile Include="HeistProject\Data\Masks.cs" />
+    <Compile Include="HeistProject\Data\Mask.cs" />
+    <Compile Include="HeistProject\Data\MaskDictWrapper.cs" />
+    <Compile Include="HeistProject\GUI\WarehouseCamera.cs" />
+    <Compile Include="HeistProject\GUI\CategorySelectionMenu.cs" />
+    <Compile Include="HeistProject\GUI\ColoredUIItem.cs" />
+    <Compile Include="HeistProject\GUI\HeistBoard.cs" />
+    <Compile Include="HeistProject\GUI\DrillingMinigame.cs" />
+    <Compile Include="HeistProject\GUI\HeistCelebration.cs" />
+    <Compile Include="HeistProject\GUI\HeistMap.cs" />
+    <Compile Include="HeistProject\GUI\MissionFailedScreen.cs" />
+    <Compile Include="HeistProject\GUI\MissionPassedScreen.cs" />
+    <Compile Include="HeistProject\GUI\OutfitSelectionMenu.cs" />
+    <Compile Include="HeistProject\GUI\SetupMenu.cs" />
+    <Compile Include="HeistProject\GUI\MenuSetup.cs" />
+    <Compile Include="HeistProject\GUI\TimerBarBase.cs" />
+    <Compile Include="HeistProject\GUI\TextTimerBar.cs" />
+    <Compile Include="HeistProject\GUI\BarTimerBar.cs" />
+    <Compile Include="HeistProject\GUI\TimerBarPool.cs" />
+    <Compile Include="HeistProject\GUI\MainMenu\OnItemSelect.cs" />
+    <Compile Include="HeistProject\GUI\MainMenu\TabHeistListItem.cs" />
+    <Compile Include="HeistProject\GUI\MainMenu\TabItemSimpleList.cs" />
+    <Compile Include="HeistProject\GUI\MainMenu\TabMoneyItem.cs" />
+    <Compile Include="HeistProject\GUI\MainMenu\TabSubmenuItem.cs" />
+    <Compile Include="HeistProject\GUI\MainMenu\TabItem.cs" />
+    <Compile Include="HeistProject\GUI\MainMenu\TabTextItem.cs" />
+    <Compile Include="HeistProject\GUI\MainMenu\TabView.cs" />
+    <Compile Include="SeriesA\Finale.cs" />
+    <Compile Include="SeriesA\PosInfo.cs" />
+    <Compile Include="SeriesA\Rats.cs" />
+    <Compile Include="InstaScript\PacificFinale.cs" />
+    <Compile Include="InstaScript\PosInfo.cs" />
+    <Compile Include="InstaScript\Hostage.cs" />
+    <Compile Include="InstaScript\FinaleLogic.cs" />
+    <Compile Include="InstaScript\KurumaLogic.cs" />
+    <Compile Include="InstaScript\ScopeOutLogic.cs" />
+    <Compile Include="InstaScript\ConvoySetupLogic.cs" />
+    <Compile Include="InstaScript\TitanSetupLogic.cs" />
+    <Compile Include="InstaScript\HackSetupLogic.cs" />
+    <Compile Include="InstaScript\VansSetupLogic.cs" />
+    <Compile Include="ExternalScript\SetupHeistLogic.cs" />
+    <Compile Include="ExternalScript\HeatHeistLogic.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
