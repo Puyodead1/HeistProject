@@ -43,7 +43,7 @@ jobs:
           prerelease: false
           release_name: ${{ steps.timestamp.outputs.timestamp }}
           tag_name: ${{ github.ref }}
-          body_path: CHANGELOG.md
+          body: This is an auto-generated release.
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Upload Release Artifacts
