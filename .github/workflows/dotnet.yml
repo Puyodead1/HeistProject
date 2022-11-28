@@ -26,8 +26,32 @@ jobs:
       - name: Copy HeistProject Data Files
         run: Copy 'HeistProjectFiles/' 'bin/x64/Release/HeistProject' -recurse
         shell: powershell
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v3.0.0
+      - name: Archive Release
+        uses: thedoctor0/zip-release@main
         with:
-            name: HeistProject
-            path: bin/x64/Release/*
+          type: 'zip'
+          filename: 'release.zip'
+          directory: 'bin/x64/Release'
+      - name: Get timestamp
+        id: timestamp
+        run: echo "::set-output name=date::$(date +%s)"
+      - name: release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: ${{ steps.timestamp.outputs.timestamp }}
+          tag_name: ${{ github.ref }}
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Upload Release Artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: bin/x64/Release/release.zip
+          asset_name: release.zip
+          asset_content_type: application/zip
