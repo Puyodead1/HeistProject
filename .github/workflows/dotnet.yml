@@ -34,7 +34,7 @@ jobs:
           directory: 'bin/x64/Release'
       - name: Get timestamp
         id: timestamp
-        run: echo "::set-output name=date::$(date +%s)"
+        run: echo "::set-output name=timestamp::$(date +%s)"
       - name: release
         uses: actions/create-release@v1
         id: create_release
