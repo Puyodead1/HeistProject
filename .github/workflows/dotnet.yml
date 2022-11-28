@@ -42,7 +42,7 @@ jobs:
           draft: false
           prerelease: false
           release_name: ${{ steps.timestamp.outputs.timestamp }}
-          tag_name: ${{ github.ref }}
+          tag_name: ${{ steps.timestamp.outputs.timestamp }}
           body: This is an auto-generated release.
         env:
           GITHUB_TOKEN: ${{ github.token }}
