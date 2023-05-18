@@ -3,7 +3,7 @@ Decompiled and Fixed version of HeistProject GTAV mod
 
 Decompiled from https://www.gta5-mods.com/scripts/heist-project
 
-You can download pre-compiled DLLs from [GitHub Actions](https://github.com/Puyodead1/HeistProject/actions)
+You can download pre-compiled DLLs from [Releases](https://github.com/Puyodead1/HeistProject/releases/latest)
 
 Compiled against ScriptHookVDotNet V2 and NativeUI 1.9
 
