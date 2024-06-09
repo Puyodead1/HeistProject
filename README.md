@@ -1,3 +1,6 @@
+## Notice
+You should seek alternatives such as Build A Mission, this mod is old and not getting any maintance, it only fixed a bug that prevented anyone from actually using it.
+
 # HeistProject
 Decompiled and Fixed version of HeistProject GTAV mod
 
